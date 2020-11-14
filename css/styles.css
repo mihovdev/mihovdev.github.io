@@ -10292,3 +10292,8 @@ h3 {
 }
 
 
+.dropdown-item {
+  display: inline;
+  padding: 0;
+  width: auto;
+}
