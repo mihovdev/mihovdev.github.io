@@ -67,3 +67,6 @@
   
   })(jQuery); // End of use strict
   
+function contactme(){
+location.href= "#contact"
+}
