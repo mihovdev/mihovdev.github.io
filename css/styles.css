@@ -10298,3 +10298,15 @@ h3 {
   padding: 0;
   width: auto;
 }
+
+.tools {
+  width: 100px;
+  height: 100px;
+  margin-left:25px; 
+} 
+
+#tools-container {
+  overflow:hidden;
+  width:auto;
+
+} 
