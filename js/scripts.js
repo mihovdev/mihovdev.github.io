@@ -32,7 +32,8 @@
   
     // Closes responsive menu when a scroll trigger link is clicked
     $('.js-scroll-trigger').click(function() {
-      $('.navbar-collapse').collapse('hide');
+      $('.navbar-collapse').collapse('hide'); 
+      
     });
   
     // Activate scrollspy to add active class to navbar items on scroll
@@ -72,7 +73,12 @@ location.href= "#contact"
 }
 
 function toogleIt(x) {
-  x.classList.toggle("fa-times"); 
-  x.classList.toggle("fa-bars"); 
-  
+  if (x.classList.contains("fa-bars")){
+    x.classList.toggle("fa-times"); 
+  }  
+  else if (x.classList.contains("fa-times")){
+    x.classList.toggle("fa-bars"); 
+
+  }
+
 }
