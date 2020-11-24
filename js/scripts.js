@@ -71,3 +71,8 @@ function contactme(){
 location.href= "#contact"
 }
 
+function toogleIt(x) {
+  x.classList.toggle("fa-times"); 
+  x.classList.toggle("fa-bars"); 
+  
+}
