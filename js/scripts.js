@@ -14,7 +14,7 @@
         if (target.length) {
           $('html, body').animate({
             scrollTop: (target.offset().top - 71)
-          }, 1000, "easeInOutExpo");
+          }, 150, "easeInOutExpo");
           return false;
         }
       }
