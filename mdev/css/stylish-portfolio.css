@@ -373,3 +373,13 @@ a:hover, a:focus, a:active {
 .text-secondary {
   color: #ecb807 !important;
 }
+
+.tools{
+  width: 100px;
+  padding: 20px 20px 20px 20px;
+  margin: 5px 5px 5px 5px ;
+  border-style: solid;
+  border: rgba(255, 255, 255, 0.9);
+  border-radius: 150px;
+  background-color: rgba(29, 128, 159, 0.2);
+}
