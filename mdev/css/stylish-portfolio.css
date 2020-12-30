@@ -406,9 +406,6 @@ a:hover, a:focus, a:active {
   -webkit-text-stroke: 1px white;
 }
 
-#smaller-title{
-  font-size: 40px;
-}
-#title{
-  
+.list-group{
+  padding-top: 20px;
 }
