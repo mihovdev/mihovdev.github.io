@@ -256,7 +256,7 @@ h6 {
   color: #fff;
   margin: auto 2rem 2rem;
   font-size: 20px;
-  font-weight: 600; 
+  font-weight: 600;
   -webkit-text-stroke: 1px black;
 }
 
@@ -269,13 +269,13 @@ h6 {
 .portfolio-item .caption .caption-content h2 {
   font-size: 0.8rem;
   text-transform: uppercase;
-  
+
 }
 
 .portfolio-item .caption .caption-content p {
   font-weight: 900;
   font-size: 1.2rem;
-  
+
 }
 
 @media (min-width: 992px) {
@@ -386,10 +386,12 @@ a:hover, a:focus, a:active {
 
 .text-primary {
   color: #1D809F !important;
+
 }
 
 .text-secondary {
-  color: #ecb807 !important;
+  color: #7fccfe !important;
+
 }
 
 .tools{
