@@ -1,517 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9T6Y5QT1M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-M9T6Y5QT1M');
-</script>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Professional Web Development and Web Design" />
-        <meta name="author" content="Genadi Mihov" />
-        <title>MDev - Professional Web Development</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
-        
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top">
-                    <img src="/assets/img/mdev-christmas-logo.png" width="50" height="50" class="d-inline-block" alt="">
-                  
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Mihov Dev</a>
-            </a>
- 
-                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" >
-                    <i onclick="toogleIt(this)" class="fas fa-bars"></i>
-                    
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#services">Services</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Get in touch</a></li>
-                        <li class="nav-item mx-0 mx-lg-1">
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                <b><i class="fas fa-users"></i>&nbsp SOCIAL</b>     
-                                </button> 
+<head>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">
-                                <a class="btn btn-outline-dark btn-social mx-1" href="https://facebook.com/mihovwebdev" target="_blank"><i class="fab fa-fw fa-facebook-f"></i></a> 
-                              </button>
-                              <button class="dropdown-item" type="button">
-                                  <a class="btn btn-outline-dark btn-social mx-1" href="https://github.com/mihovdev" target="_blank"><i class="fab fa-github"></i></a> 
-                             </button>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-                             <button class="dropdown-item" type="button">
-                                <a class="btn btn-outline-dark btn-social mx-1" href="https://twitter.com/gmihov95" target="_blank"><i class="fab fa-fw fa-twitter"></i></a>
-                           </button>
-                           
-                           <button class="dropdown-item" type="button">
-                            <a class="btn btn-outline-dark btn-social mx-1" href="https://www.linkedin.com/in/mihov95/" target="_blank"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                            </button>
+  <title>MDev - Professional Web Development and Design</title>
 
-                            <button class="dropdown-item" type="button">
-                                <a class="btn btn-outline-dark btn-social mx-1" href="https://www.instagram.com/mihovdev/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                </button>
-                            </div>
-                          </div>
-                        </li>
-                          
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead--> 
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/mdev-christmas-logo.png" alt="" /> 
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">MDev Web Development</h1> 
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-terminal"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Web Development & Design - Graphic Design</p>
-            </div>
-        </header>
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <!-- Bootstrap Core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Services Section-->
-<section class="page-section services" id="services">
-    <div class="container">
-        <!-- Services Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Services</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-stream"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Services Grid Items-->
-        <div class="row">
-            <!-- Services Item 1-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/img/graphic-design.png" alt="">
-                    <div class="card-body">
-                        <h3>Graphic Design</h3> 
-                      <p class="services-text">Graphic design for logo, cover photos, websites, banners etc.</p>
-                    </div>
-                  </div> 
-            </div>  
-            <!-- Services Item 2-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/img/web-development.jpg" alt="">
-                    <div class="card-body">
-                        <h3>Web Development</h3> 
-                      <p class="services-text">Fully responsive website using HTML5, CSS3, JS ,Bootstrap!</p>
-                    </div>
-                  </div>  
-            </div>
-            <!-- Services Item 3-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/img/wp-logo.png" alt="">
-                    <div class="card-body">
-                        <h3>WordPress Design</h3> 
-                      <p class="services-text">Beautiful, fully responsive website for your buisness!</p>
-                    </div>
-                  </div>   
-            </div>
+  <!-- Custom Fonts -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
-        </div>
+  <!-- Custom CSS -->
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">
+          <img src="../assets/img/mdev-logo.png" width="50px" height="50px">
+        </a>
+        <a class="js-scroll-trigger" href="#page-top">MDEV</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#about">About</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#services">Services</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead d-flex">
+    <div class="container text-center my-auto">
+      <img src="img/mdev-logo.png" width="200px" height="200px">
+      <h1 id="title" class="mb-1">MDev</h1>
+      <h3 id="smaller-title" class="mb-5">
+        <em>Professional Web Development & Design</em>
+      </h3>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
     </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- About -->
+  <section class="content-section bg-light" id="about">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h2 class="mb-5">Skills & Used Tools</h2>
+          <div class="fluid-container">
+
+
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+                  <b>GRAPHIC - 30%</b>
+              </div>
+
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                  <b>WEB - 50%</b>
+              </div>
+
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                  <b>WP - 20%</b>
+              </div>
+            </div>
+            <img class="tools" src="img/logos/linux-logo.png">
+            <img class="tools" src="img/logos/vs-code-logo.svg" >
+            <img class="tools" src="img/logos/html-set-logo.png">
+            <img class="tools" src="img/logos/bootstrap-logo.png">
+            <img class="tools" src="img/logos/wp-logo.png">
+            <img class="tools" src="img/logos/gimp-logo.png">
+        </div>
+          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What Offer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="content-section bg-primary text-white text-center" id="services">
+    <div class="container">
+      <div class="content-section-heading">
+        <h3 class="text-secondary mb-0">Services</h3>
+        <h2 class="mb-5">What We Offer</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="fas fa-paint-brush"></i>
+          </span>
+          <h4>
+            <strong>Graphic Design</strong>
+          </h4>
+          <p class="text-faded mb-0">Graphic design for logo, cover photos, websites, banners etc.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="fas fa-code"></i>
+          </span>
+          <h4>
+            <strong>Web Development</strong>
+          </h4>
+          <p class="text-faded mb-0">Fully responsive website using HTML5, CSS3, JS ,Bootstrap!</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="fab fa-wordpress"></i>
+          </span>
+          <h4>
+            <strong>WordPress Design</strong>
+          </h4>
+          <p class="text-faded mb-0">Beautiful, fully responsive and functional website for your buisness!</p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class="fas fa-search"></i>
+          </span>
+          <h4>
+            <strong>SEO Optimisation & Google Analytics</strong>
+          </h4>
+          <p class="text-faded mb-0">Your buisness website will be more findable on the web and you can make statistic of the people visiting it!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Callout -->
+  <section class="callout">
+    <div class="container text-center">
+      <h2 class="mx-auto mb-5">Get in touch & get more of <i>your</i> buisness!</h2>
+      <a class="btn btn-primary btn-xl js-scroll-trigger" href="#contact">Get in touch!</a>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="content-section" id="portfolio">
+    <div class="container">
+      <div class="content-section-heading text-center">
+        <h3 class="text-secondary mb-0">Portfolio</h3>
+        <h2 class="mb-5">Recent Projects</h2>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2">FB Cover Design</div>
+                <p class="mb-0">A Facebook Cover Design</p>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/fb-cover-photo.png" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2">FB Group Logo</div>
+                <p class="mb-0">Logo Simple Design and Creativity</p>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/fb-group-logo.png" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item" href="#">
+            <div class="caption">
+              <div class="caption-content">
+                <div class="h2">Buisness Logo</div>
+                <p class="mb-0">Website Logo Design</p>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/mdev-logo.png" alt="">
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="content-section bg-primary text-white">
+  <div class="col-lg-6 mx-auto">
+  <div class="list-group">
+
+    <a href="tel:+49 1517 21822 14" class="list-group-item list-group-item-action list-group-item"><i class="fas fa-phone"></i> <b>+49 1517 21822 14</b></a>
+
+    <a href="mailto:gmihov7@gmail.com" class="list-group-item list-group-item-action list-group-item-danger"><i class="fas fa-envelope"></i> <b>gmihov7@gmail.com</b></a>
+
+    <a href="http://wa.link/gm2007" class="list-group-item list-group-item-action list-group-item-success"><i class="fab fa-whatsapp"></i> <b>WhatsApp: +49 1517 21822 14</b></a>
+
+    <a href="http://m.me/mihow95" class="list-group-item list-group-item-action list-group-item-info"><i class="fab fa-facebook-messenger"></i> <b>Message me on Messenger</b></a>
+
+    <a href="#contact" class="list-group-item list-group-item-action">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmihovwebdev%2F&tabs&width=340&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    </a>
+
+    <a href="#contact" class="list-group-item list-group-item-action">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d168265.27264143713!2d9.037132352260539!3d48.77912417146819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db34c1ad8fd3%3A0x79d5c11c7791cfe4!2z0KnRg9GC0LPQsNGA0YI!5e0!3m2!1sbg!2sde!4v1605107860564!5m2!1sbg!2sde" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </a>
+  </div>
+</div>
 </section>
 
-<section class="page-section bg-primary text-white mb-0" id="">
-    <div class="container">
-        <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">Get in touch</h2>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- About Section Content-->
-        <div class="row"> 
-            <div class="col-lg-5 ml-auto">
-                <img class="rounded float-left img-responsive" width="300px" src="assets/img/getintouch-photo.jpg" alt="">
-            </div> 
-  
-            <div class="col-lg-7 ml-auto">
-                <h3 class="text-right">You are interested in developing and getting more successful buisness in the Web? <br>Fell free to contact me at any time 24/7. </h3>     
- 
-                        <p class="text-right">
-                            <button type="button" class="btn btn-info btn-lg" onclick="contactme()">
-                                <span><i class="fas fa-arrow-down"></i></span> &nbsp <b>GET IN TOUCH</b></button>   
-                        </p>
-            </div>
-
-        </div>
+  <!-- Call to Action
+  <section class="content-section bg-primary text-white">
+    <div class="container text-center">
+      <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+      <a href="#!" class="btn btn-xl btn-light mr-4">Click Me!</a>
+      <a href="#!" class="btn btn-xl btn-dark">Look at Me!</a>
     </div>
-</section> 
+  </section>
+-->
 
 
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-images"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row"> 
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/fb-group-logo.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/mdev-logo.png" alt="" />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-eye fa-3x"></i></div> 
-                            </div>
-                            <img class="img-fluid" src="assets/img/portfolio/fb-cover-photo.png" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="https://facebook.com/mihovwebdev" target="_blank">
+            <i class="icon-social-facebook"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="https://www.linkedin.com/in/mihov95/" target="_blank">
+            <i class="icon-social-linkedin"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a class="social-link rounded-circle text-white" href="https://github.com/mihovdev" target="_blank">
+            <i class="icon-social-github"></i>
+          </a>
+        </li>
 
+      </ul>
+      <p class="text-muted small mb-0">Copyright &copy; mihovdev.github.io 2021</p>
+    </div>
+  </footer>
 
-        <!-- About Section-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
-            <div class="container">
-                <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- About Section Content-->
-                <div class="row"> 
-                    <div class="col-lg-12 ml-auto">
-                        <h3 class="about-skill" text-align="center">SKILLS</h3>   
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                <b>GRAPHIC - 30%</b>
-                            </div> 
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                <b>WEB - 50%</b>
-                            </div>  
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                <b>WP - 20%</b>    
-                            </div> 
-                          </div>
-                 
-  
-                    </div>
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                </div>
+  <!-- Custom scripts for this template -->
+  <script src="js/stylish-portfolio.min.js"></script>
 
-            </div>  
+</body>
 
-            <br>
-            <hr width="40%"> 
-
-                <div class="container" id="tools-container">
-                    <h3 text-align="center">
-                        DEV TOOLS 
-                    </h3>
-                    <div class="fluid-container">
-                        <img class="tools" src="assets/img/logos/linux-logo.png"> 
-                        <img class="tools" src="assets/img/logos/vs-code-logo.svg" >  
-                        <img class="tools" src="assets/img/logos/html-set-logo.png"> 
-                        <img class="tools" src="assets/img/logos/wp-logo.png">   
-                        <img class="tools" src="assets/img/logos/bootstrap-logo.png"> 
-                        <img class="tools" src="assets/img/logos/gimp-logo.png">  
-                    </div> 
-                </div> 
-
-    
-            
-        </section>
-        <!-- Contact Section-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Get in touch</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-paper-plane"></i></div> 
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Contact Section Form-->
-                <div class="row">
-                    <div class="col-lg-4 mx-auto">
-                        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                        <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Name</label>
-                                    <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Email Address</label>
-                                    <input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Phone Number</label>
-                                    <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Message</label>
-                                    <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br />
-                            <div id="success"></div>
-                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit" style="width: 100%;">Send!</button></div>
-                        </form> 
-                    </div> 
-
-                    <div class="col-lg-4 mx-auto">
-
-                        <div class="list-group">
-                            <a href="#contact" class="list-group-item list-group-item-action"><h3>Get in touch</h3></a> 
-                          
-                            <a href="tel:+49 1517 21822 14" class="list-group-item list-group-item-action list-group-item"><i class="fas fa-phone"></i> <b>+49 1517 21822 14</b></a>
-
-                            <a href="mailto:gmihov7@gmail.com" class="list-group-item list-group-item-action list-group-item-danger"><i class="fas fa-envelope"></i> <b>gmihov7@gmail.com</b></a>
-
-                            <a href="http://wa.link/gm2007" class="list-group-item list-group-item-action list-group-item-success"><i class="fab fa-whatsapp"></i> <b>WhatsApp: +49 1517 21822 14</b></a>
-
-                            <a href="http://m.me/mihow95" class="list-group-item list-group-item-action list-group-item-info"><i class="fab fa-facebook-messenger"></i> <b>Message me on Messenger</b></a>   
-
-                            <a href="#contact" class="list-group-item list-group-item-action">
-                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmihovwebdev%2F&tabs&width=340&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                            </a> 
-
-                            <a href="#contact" class="list-group-item list-group-item-action">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d168265.27264143713!2d9.037132352260539!3d48.77912417146819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db34c1ad8fd3%3A0x79d5c11c7791cfe4!2z0KnRg9GC0LPQsNGA0YI!5e0!3m2!1sbg!2sde!4v1605107860564!5m2!1sbg!2sde" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                            </a>
-
-                            
-
-
-                          </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
-                        <p class="lead mb-0">
-                            70374 Stuttgart
-                        </br>
-                            Deutschland  
-                        </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Social Media</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://facebook.com/mihovwebdev" target="_blank"><i class="fab fa-fw fa-facebook-f"></i></a> 
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/mihovdev" target="_blank"><i class="fab fa-github"></i></a>  
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://twitter.com/gmihov95" target="_blank"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/mihov95/" target="_blank"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.instagram.com/mihovdev/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div> 
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                        <p class="lead mb-0">
-                            Get the most of your buisness with more functional website!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright © mihovdev.github.io 2020</small></div>
-        </div>
-        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
-        <div class="scroll-to-top d-lg-none position-fixed">
-            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
-        </div>
-        <!-- Portfolio Modals-->
-        <!-- Portfolio Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">Facebook Page Logo </h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/fb-group-logo.png" alt="" />
-                                    <br> 
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio Modal 2-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal2Label">Buisness Logo </h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/mdev-logo.png" alt="" />
-                                    <br> 
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio Modal 3-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal3Label">Facebook Cover </h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
-                                        <div class="divider-custom-line"></div> 
-                                    </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/fb-cover-photo.png" alt="" />
-                                    <br> 
-                                    <button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                        </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- Contact form JS-->
-        <script src="assets/mail/jqBootstrapValidation.js"></script>
-        <script src="assets/mail/contact_me.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.1/dist/circle-progress.js"></script>
-        <script src="scripts/index.js"></script>
-    </body>
 </html>
