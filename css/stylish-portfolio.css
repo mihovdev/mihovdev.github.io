@@ -416,3 +416,23 @@ a:hover, a:focus, a:active {
   padding-top: 20px;
   border-radius: 10px;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(241, 241, 241, 0.5);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d94e9;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #79bbe9;
+}
