@@ -32,7 +32,9 @@
         "@fortawesome/fontawesome-free": "5.15.1",
         "bootstrap": "4.5.3",
         "jquery": "^3.5.1",
+        "jquery-circle-progress": "^1.2.2",
         "jquery.easing": "^1.4.1",
+        "progressbar.js": "^1.1.0",
         "simple-line-icons": "2.5.5"
     },
     "devDependencies": {
