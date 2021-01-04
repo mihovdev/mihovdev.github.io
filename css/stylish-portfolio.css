@@ -423,6 +423,8 @@ a:hover, a:focus, a:active {
 
 #title, #smaller-title{
   -webkit-text-stroke: 1px white;
+  text-transform: uppercase;
+  
 }
 
 .list-group{
