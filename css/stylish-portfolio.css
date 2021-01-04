@@ -352,13 +352,13 @@ a:hover, a:focus, a:active {
 }
 
 .btn-primary {
-  background-color: #1D809F !important;
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
   border-color: #1D809F !important;
   color: #fff !important;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background-color: #155d74 !important;
+  background-position: right center;
   border-color: #155d74 !important;
 }
 
@@ -375,11 +375,27 @@ a:hover, a:focus, a:active {
 
 .btn-dark {
   color: #fff !important;
+  background-image: linear-gradient(to right, #18191a 0%, #abaeaf 51%, #626468 100%);
+}
+.btn-dark:hover{
+  background-position: right center;
 }
 
-.btn {
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
-  font-weight: 700;
+.btn { 
+  font-weight: 800;
+  font-size: large;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: rgb(136, 128, 128); 
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 30px;
+  -webkit-text-stroke: 1px black;
 }
 
 .bg-primary {
