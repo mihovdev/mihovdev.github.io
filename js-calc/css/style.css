@@ -56,4 +56,28 @@ body{
 
 input{
     text-align: center;
+    opacity: 0.6;
+}
+
+
+/* Mobile responsivness */
+@media screen and (max-width: 400px) {
+.signs{
+    width: 35px;
+    margin-left: 3px;
+    margin-right: 5px;
+    font-size: 30px;
+    font-weight: 900;
+    background: rgb(124,117,247);
+    background: linear-gradient(90deg, rgba(124,117,247,1) 0%, rgba(76,76,250,1) 35%, rgba(73,177,255,1) 100%);
+    border-radius: 50px;
+    cursor: grab;
+    color: whitesmoke;
+    transition: 0.1s;
+    border-color: whitesmoke;
+    border-style: solid;
+    text-align: center;
+
+}
+
 }
