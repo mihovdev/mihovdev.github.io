@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Calc</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+      <div class="container">
+        <div class="form-group">
+          <input type="number"
+            class="form-control" name="first_num" id="first_num" aria-describedby="helpId" placeholder="Enter number">
+        </div>
+
+        <div class="container-fluid">
+          <div class="sign-group">
+            <div class="signs" id="plus" onclick="calc()">+</div>
+            <div class="signs" id="minus">-</div>
+            <div class="signs" id="divide">/</div>
+            <div class="signs" id="multiply">*</div>
+            <div class="signs" id="clear">C</div>
+            <div class="signs" id="equal">=</div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+          <input type="number"
+            class="form-control" name="sec_num" id="sec_num" aria-describedby="helpId" placeholder="Enter number">
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+          <input type="number"
+            class="form-control" name="result" id="result" aria-describedby="helpId" placeholder="Result" disabled>
+        </div>
+
+      </div>
+
+<script src="js/script.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+</html>
