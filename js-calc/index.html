@@ -5,27 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calc</title>
 
-  <!-- Bootstrap Core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="main-container">
     <div class="container">
       <div class="form-group">
         <input type="number"
-          class="form-control" name="first_num" id="first_num" aria-describedby="helpId" placeholder="Enter number">
+          class="form-control" name="x" id="x" aria-describedby="helpId" placeholder="Enter number">
       </div>
 
       <div class="container">
         <div class="sign-group">
-          <div class="signs" id="plus" onclick="calc()">+</div>
-          <div class="signs" id="minus">-</div>
-          <div class="signs" id="divide">/</div>
-          <div class="signs" id="multiply">*</div>
-          <div class="signs" id="clear">C</div>
-          <div class="signs" id="equal">=</div>
+          <div class="signs" id="plus" onclick=add()>+</div>
+          <div class="signs" id="minus" onclick="minus()">-</div>
+          <div class="signs" id="divide" onclick="divide()">/</div>
+          <div class="signs" id="multiply" onclick="multiply()">*</div>
+          <div class="signs" id="clear" onclick="clear()">C</div>
         </div>
       </div>
 
@@ -33,7 +32,7 @@
 
       <div class="form-group">
         <input type="number"
-          class="form-control" name="sec_num" id="sec_num" aria-describedby="helpId" placeholder="Enter number">
+          class="form-control" name="y" id="y" aria-describedby="helpId" placeholder="Enter number">
       </div>
 
       <hr>
@@ -48,13 +47,14 @@
       
 
 <script src="js/script.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

@@ -235,15 +235,19 @@ h6 {
   display: block;
   position: relative;
   overflow: hidden;
-  max-width: 530px;
   margin: auto auto 1rem;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  width: 500px;
+  height: 250px;
+  margin: 5px 5px 5px 5px;
 }
 
 .portfolio-item .caption {
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(128, 125, 125, 0.2);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -251,17 +255,22 @@ h6 {
 }
 
 .portfolio-item .caption .caption-content {
-  color: #fff;
+  color: rgb(255, 255, 255);
   margin: auto 2rem 2rem;
   font-size: 20px;
-  font-weight: 600;
-  -webkit-text-stroke: 1px black;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 
 .caption-content{
-  background-color: rgba(17, 146, 206, 0.4);
+  background-color: rgba(17, 146, 206, 0.6);
   border-radius: 30px;
   padding: 10px 10px 10px 10px;
+  -webkit-box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
+  box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
 }
 
 .portfolio-item .caption .caption-content h2 {
@@ -302,13 +311,8 @@ h6 {
     clip-path: inset(-1px);
   }
   .portfolio-item:hover img {
-    -webkit-clip-path: inset(2rem);
-    clip-path: inset(2rem);
-  }
-  .portfolio-item:hover .caption {
-    background-color: rgba(29, 128, 159, 0.9);
-    -webkit-clip-path: inset(2rem);
-    clip-path: inset(2rem);
+    transform: scale(1.2);
+    transition: all .5s;
   }
 }
 

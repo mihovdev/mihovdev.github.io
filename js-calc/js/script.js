@@ -1,16 +1,16 @@
-function calc(){
-    var firstNum = parseFloat(document.getElementById("first_num").value);
-    var secondNum = parseFloat(document.getElementById("sec_num").value);
-    var result = document.getElementById("result");
-
-    var plus = document.getElementById("plus");
-    var minus = document.getElementById("minus");
-    var divide = document.getElementById("divide");
-    var multiply = document.getElementById("multiply");
+$('document').ready( () => {
+    var x = parseFloat($('#x').val());
+    var y = parseFloat($('#y').val());
+alert    
+})
 
 
-    result = firstNum + secondNum;
 
-    document.getElementById("result").value = result;
+var sum = 0;
 
+
+function add() {
+    sum = x+y;
+
+    alert(sum)
 }
