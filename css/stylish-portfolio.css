@@ -271,6 +271,7 @@ h6 {
   -webkit-box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
   -moz-box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
   box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .portfolio-item .caption .caption-content h2 {
@@ -283,6 +284,10 @@ h6 {
   font-weight: 900;
   font-size: 1.2rem;
 
+}
+.caption:hover{
+  transition: 1s;  
+  opacity: 0.4;
 }
 
 @media (min-width: 992px) {
