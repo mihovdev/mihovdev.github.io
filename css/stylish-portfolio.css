@@ -250,7 +250,7 @@ h6 {
 
 .portfolio-item .caption .caption-content {
   color: rgb(255, 255, 255);
-  margin: auto 2rem 2rem;
+  margin-top: 150px;
   font-size: 20px;
   font-weight: 900;
   text-transform: uppercase;
@@ -260,12 +260,13 @@ h6 {
 
 .caption-content{
   background-color: rgba(17, 146, 206, 0.6);
-  border-radius: 30px;
   padding: 10px 10px 10px 10px;
   -webkit-box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
   -moz-box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
   box-shadow: 8px 10px 19px -6px rgba(0,0,0,0.75);
   font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  bottom: 0;
 }
 
 .portfolio-item .caption .caption-content h2 {
@@ -280,8 +281,8 @@ h6 {
 
 }
 .caption:hover{
-  transition: 1s;  
-  opacity: 0.4;
+  transition: 0.5s;  
+  opacity: 0;
 }
 
 @media (max-width: 600px) {
@@ -297,12 +298,9 @@ h6 {
   }
   .portfolio-item .caption .caption-content {
     transition: opacity 0.25s;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-bottom: 5rem;
+    margin-top: 150px;
   }
   .portfolio-item img {
-    height: 100%;
     transition: -webkit-clip-path 0.25s ease-out;
     transition: clip-path 0.25s ease-out;
     transition: clip-path 0.25s ease-out, -webkit-clip-path 0.25s ease-out;
@@ -310,8 +308,8 @@ h6 {
     clip-path: inset(-1px);
   }
   .portfolio-item:hover img {
-    transform: scale(1.2);
-    transition: all .5s;
+    transform: scale(1.1);
+    transition: all 0.5s;
   }
 }
 
