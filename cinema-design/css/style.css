@@ -1,9 +1,22 @@
+body{
+    background-image: url(https://www.teahub.io/photos/full/101-1019747_passeio-das-aguas-cinema.jpg);
+    background-position: center;
+    background-size: inherit;
+    color: white;
+}
+
 .main-container{
-    background-color: rgba(0, 0, 255, 0.247);
+    background-color: rgba(22, 137, 245, 0.486);
     width: 90%;
     height: 90%;
     margin-left: 5%;
     margin-top: 5%;
     border-radius: 20px;
     padding: 20px 20px 20px 20px;
+    text-align: center;
 }
+
+.table-responsive{
+    background-color: rgba(124, 124, 124, 0.74);
+    border-radius: 20px;
+} 
