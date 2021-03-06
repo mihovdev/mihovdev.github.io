@@ -1,0 +1,9 @@
+.main-container{
+    background-color: rgba(0, 0, 255, 0.247);
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 20px;
+    padding: 20px 20px 20px 20px;
+}
