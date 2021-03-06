@@ -5,11 +5,27 @@ body{
     color: white;
 }
 
+footer{
+    padding-top: 15px;
+    font-size: x-small;
+}
+
+.nav{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 0.9;
+}
+
 h4{ 
     padding: 5px 5px 5px 5px; 
     text-shadow: 2px 2px 10px #000000;
     text-transform: uppercase;
     font-weight: 600;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(22, 142, 240);
 }
 
 .cinema-title{
@@ -24,14 +40,15 @@ h4{
     height: 90%;
     margin-left: 5%;
     margin-top: 2%;
-    border-radius: 20px;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 20px 20px; 
+    border-radius: 12px;
     text-align: center;
 }
 
 .table-responsive{
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 } 
 
 td{
@@ -43,6 +60,11 @@ th>a>img {
     border-radius: 20px;
     box-shadow: black;
     border: solid rgba(0, 0, 0, 0.24) 1px;
+}
+
+th>a>img:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 ul>li{
