@@ -57,7 +57,6 @@ a{
 
 .card{
     box-shadow: black 10px 10px 20px;
-    margin-right: 35px;
 }
 
 .card:hover {
@@ -102,3 +101,12 @@ ul>li{
 .nav-link:hover{
     color: burlywood;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .soon-imgs{
+        padding: 50px 10px 50px 10px;
+        margin-bottom: 15px; 
+    }
+    
+} 
