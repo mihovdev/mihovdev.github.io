@@ -354,7 +354,7 @@ a:hover, a:focus, a:active {
 }
 
 .btn-primary {
-  background-image: linear-gradient(to right, #347cf0 0%, #c2e9fb 51%, #0850c4 100%);
+  background-image: linear-gradient(to right, #1063b6 0%, #0d87af 51%, #f8f8fa 100%);
   border-color: #1D809F !important;
   color: #fff !important;
 }
@@ -377,7 +377,7 @@ a:hover, a:focus, a:active {
 
 .btn-dark {
   color: #fff !important;
-  background-image: linear-gradient(to right, #18191a 0%, #abaeaf 51%, #626468 100%);
+  background-image: linear-gradient(to right, #1063b6 0%, #0d87af 51%, #f8f8fa 100%);
 }
 .btn-dark:hover{
   background-position: right center;
@@ -394,7 +394,7 @@ a:hover, a:focus, a:active {
   color: rgb(136, 128, 128); 
  text-shadow: 0px 0px 10px rgba(0,0,0,0.9);
   box-shadow: 0 0 20px #eee;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .bg-primary {
