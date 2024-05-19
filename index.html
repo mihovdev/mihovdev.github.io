@@ -4,36 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Expense Tracker</h1>
-        <label for="transaction">Enter Transaction Amount (EUR):</label>
-        <input type="number" id="transaction" placeholder="Enter amount" min="0">
-        <label for="description">Transaction Description:</label>
-        <input type="text" id="description" placeholder="Description">
-        <button onclick="addTransaction()">Add Transaction</button>
-        <p>Total Expenses: <span id="totalExpenses">0.00</span> EUR</p>
-        <label for="save">Save Money (EUR):</label>
-        <input type="number" id="save" placeholder="Enter amount to save" min="0">
-        <button onclick="saveMoney()">Save</button>
-        <button onclick="resetTransactions()">Reset Transactions</button>
+        <h1 class="text-center">Expense Tracker</h1>
+        <div class="form-group">
+            <label for="transaction">Enter Transaction Amount (EUR):</label>
+            <input type="number" id="transaction" class="form-control" placeholder="Enter amount" min="0">
+        </div>
+        <div class="form-group">
+            <label for="description">Transaction Description:</label>
+            <input type="text" id="description" class="form-control" placeholder="Description">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="addTransaction()">Add Transaction</button>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h2>Limit</h2>
+                <div class="form-group">
+                    <label for="limit">Set Your Limit (EUR):</label>
+                    <input type="number" id="limit" class="form-control" placeholder="Set your limit" min="0">
+                </div>
+                <button class="btn btn-secondary btn-block" onclick="setLimit()">Set Limit</button>
+                <p>Current Limit: <span id="currentLimit" class="bold">0.00</span> EUR</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Summary</h2>
+                <p>Total Expenses: <span id="totalExpenses" class="bold">0.00</span> EUR</p>
+                <p>Remaining Limit: <span id="remainingLimit" class="bold">0.00</span> EUR</p>
+                <div class="form-group">
+                    <label for="save">Save Money (EUR):</label>
+                    <input type="number" id="save" class="form-control" placeholder="Enter amount to save" min="0">
+                </div>
+                <p>Amount to Save: <span id="savedAmount" class="bold">0.00</span> EUR</p>
+                <button class="btn btn-success btn-block" onclick="saveMoney()">Save</button>
+                <button class="btn btn-danger btn-block" onclick="resetTransactions()">Reset Transactions</button>
+            </div>
+        </div>
     </div>
 
-    <div class="container">
-        <h2>Limit</h2>
-        <label for="limit">Set Your Limit (EUR):</label>
-        <input type="number" id="limit" placeholder="Set your limit" min="0">
-        <button onclick="setLimit()">Set Limit</button>
-        <p>Remaining Limit: <span id="remainingLimit">0.00</span> EUR</p>
-    </div>
-
-    <div class="container">
+    <div class="container mt-4">
         <h2>Transaction History</h2>
-        <ul id="transactionList"></ul>
+        <ul id="transactionList" class="list-group"></ul>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
