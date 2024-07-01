@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+
+</head>
+<body>
+    <header>
+        <h1>Budget App</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="budget">
+                <div class="budget__income">
+                    <h2 class="budget__title">Income</h2>
+                    <div class="budget__value income">+ 0.00</div>
+                </div>
+                <div class="budget__expenses">
+                    <h2 class="budget__title">Expenses</h2>
+                    <div class="budget__value expenses">- 0.00</div>
+                </div>
+                <div class="budget__total">
+                    <h2 class="budget__title">Total</h2>
+                    <div class="budget__value total">0.00</div>
+                </div>
+            </div>
+
+            <div class="add">
+                <select class="add__type">
+                    <option value="income">Income</option>
+                    <option value="expenses">Expenses</option>
+                </select>
+                <input type="text" class="add__description" placeholder="Description">
+                <input type="number" class="add__value" placeholder="Value">
+                <button class="add__btn">Add</button>
+                <button class="save__btn"><i class="fas fa-save"></i> Save</button>
+                <button class="clear__btn"><i class="fas fa-trash-alt"></i> Clear</button>
+            </div>
+            
+            
+            
+
+            <div class="list">
+                
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,51 +1,37 @@
-/* Custom styles for the application */
-body {
-    font-family: Arial, sans-serif;
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
 }
 
 .container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
+    text-align: center;
 }
 
 h1 {
     margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
 }
 
-.bold {
-    font-weight: bold;
-}
-
-.list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.transaction-description {
-    flex: 2;
-}
-
-.transaction-date {
-    color: #666;
-    flex: 1;
-}
-
-.delete-button {
-    padding: 5px;
-    background-color: #f44336;
-    color: white;
+.app-button {
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    padding: 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
-    background-color: #cc0000;
+.app-button:hover {
+    background-color: #0056b3;
 }
