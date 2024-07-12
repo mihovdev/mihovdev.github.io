@@ -1,0 +1,53 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+    padding-top: 50px;
+}
+header {
+    padding: 20px;
+    text-align: center;
+    background: #1F1F1F;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+nav {
+    background: #282828;
+}
+nav a {
+    color: #FFFFFF !important;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+}
+nav a:hover {
+    background: #383838;
+}
+section {
+    padding: 20px;
+}
+.project-image {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+.project-image:hover {
+    transform: scale(1.05);
+}
+.project-card {
+    margin-bottom: 20px;
+}
+.progress {
+    height: 20px;
+}
+footer {
+    padding: 20px;
+    text-align: center;
+    background: #1F1F1F;
+}

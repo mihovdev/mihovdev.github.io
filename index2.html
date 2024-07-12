@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MihovDEV's Personal Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>MihovDEV</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MihovDEV</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link smooth-scroll" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smooth-scroll" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smooth-scroll" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smooth-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>
+            Hello! I'm MihovDEV, a dedicated and enthusiastic developer with a passion for creating innovative and effective solutions. My approach to development is rooted in a commitment to excellence and a deep understanding of my clients' needs. I take pride in staying up-to-date with the latest industry trends and continuously expanding my knowledge to ensure that my solutions are both cutting-edge and reliable.
+        </p>
+        <p>
+            On this personal webpage, you can explore my portfolio, learn about the various projects I've worked on, and gain insight into my technical expertise. If you're looking for a dedicated professional to bring your ideas to life or to enhance your existing projects, you've come to the right place. Feel free to browse through my work and don't hesitate to reach out if you have any questions or if you're interested in collaborating.
+        </p>
+        
+    </section>
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div class="row">
+            <div class="col-md-4 project-card">
+                <a href="apps/budget-app/" target="_blank">
+                    <img src="imgs/budget-app.png" alt="Project 1" class="project-image">
+                </a>
+                <h5 class="mt-2">Simple JS Budget-App</h5>
+            </div>
+            <!-- <div class="col-md-4 project-card">
+                <a href="https://link-to-project2.com" target="_blank">
+                    <img src="https://via.placeholder.com/300" alt="Project 2" class="project-image">
+                </a>
+                <h5 class="mt-2">Project 2</h5>
+                <p>Description of project 2.</p>
+            </div>
+            <div class="col-md-4 project-card">
+                <a href="https://link-to-project3.com" target="_blank">
+                    <img src="https://via.placeholder.com/300" alt="Project 3" class="project-image">
+                </a>
+                <h5 class="mt-2">Project 3</h5>
+                <p>Description of project 3.</p>
+            </div> -->
+        </div>
+    </section>
+    <section id="skills" class="container">
+        <h2>Skills</h2>
+        <h5>Programming Languages</h5>
+        <div class="mb-3">
+            <label>HTML</label>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>CSS</label>
+            <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>JavaScript</label>
+            <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+            </div>
+        </div>
+
+        <h5>Tools & Programs</h5>
+        <p>Here are some of the tools and programs I work with:</p>
+        <ul>
+            <li>Visual Studio Code</li>
+            <li>Git & GitHub</li>
+            <li>WordPress</li>
+        </ul>
+    </section>
+    <section id="contact" class="container">
+        <h2>Contact</h2>
+        <div class="row">
+            <div class="col-md-6 contact-form">
+                <form action="mailto:gmihov7@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+            <div class="col-md-6 map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26276.189873202176!2d9.167488432991416!3d48.77584585853639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db120a0146b9%3A0x14a98754cf214c30!2sStuttgart!5e0!3m2!1sen!2sde!4v1624377774344!5m2!1sen!2sde" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 MihovDEV. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
