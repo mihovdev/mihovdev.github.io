@@ -11,6 +11,15 @@
 <body>
     <div class="container mt-3">
         <h1 class="text-center display-4">Следене на калории</h1>
+
+        <form id="goal-form" class="mb-4">
+            <div class="form-group">
+                <label for="goal">Цел калории за деня:</label>
+                <input type="number" class="form-control" id="goal" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Задай цел</button>
+        </form>
+        
         <form id="calorie-form" class="mb-4">
             <div class="form-group">
                 <label for="food">Храна:</label>
@@ -21,15 +30,9 @@
                 <input type="number" class="form-control" id="calories" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Добави</button>
-            <button id="save-btn" type="button" class="btn btn-secondary btn-block">Запази</button>
+            <button id="save-btn" type="button" class="btn btn-success btn-block">ЗАПАЗИ</button>
         </form>
-        <form id="goal-form" class="mb-4">
-            <div class="form-group">
-                <label for="goal">Цел калории за деня:</label>
-                <input type="number" class="form-control" id="goal" required>
-            </div>
-            <button type="submit" class="btn btn-success btn-block">Задай цел</button>
-        </form>
+        
         <div id="goal-display" class="mb-4 text-center" style="display:none;"></div>
         <h2 class="text-center">Списък с храни</h2>
         <ul id="food-list" class="list-group mb-4"></ul>

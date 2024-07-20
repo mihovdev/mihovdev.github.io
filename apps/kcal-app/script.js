@@ -53,7 +53,9 @@ document.getElementById('reset-btn').addEventListener('click', function() {
     localStorage.removeItem('goal');
 });
 
-document.getElementById('save-btn').addEventListener('click', saveData);
+document.getElementById('save-btn').addEventListener('click', function() {
+    saveData();
+});
 
 document.getElementById('modal-save-btn').addEventListener('click', function() {
     saveData();
@@ -118,5 +120,7 @@ function loadSavedData() {
         updateRemainingCalories(0, 'reset');
     }
 }
+
+
 
 window.onload = loadSavedData;
