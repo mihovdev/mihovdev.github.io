@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Следене на калории</title>
+    <!-- Връзка към Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-3">
+        <h1 class="text-center display-4">Следене на калории</h1>
+        <form id="calorie-form" class="mb-4">
+            <div class="form-group">
+                <label for="food">Храна:</label>
+                <input type="text" class="form-control" id="food" required>
+            </div>
+            <div class="form-group">
+                <label for="calories">Калории:</label>
+                <input type="number" class="form-control" id="calories" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Добави</button>
+            <button id="save-btn" type="button" class="btn btn-secondary btn-block">Запази</button>
+        </form>
+        <form id="goal-form" class="mb-4">
+            <div class="form-group">
+                <label for="goal">Цел калории за деня:</label>
+                <input type="number" class="form-control" id="goal" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Задай цел</button>
+        </form>
+        <div id="goal-display" class="mb-4 text-center" style="display:none;"></div>
+        <h2 class="text-center">Списък с храни</h2>
+        <ul id="food-list" class="list-group mb-4"></ul>
+        <h2 class="text-center">Оставащи калории: <span id="remaining-calories">0</span></h2>
+        <button id="reset-btn" class="btn btn-danger btn-block">Нулирай всички стойности</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exitModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exitModalLabel">Напомняне</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Не забравяй да запазиш всичко преди да излезеш!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modal-save-btn">Запази</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмени</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Връзка към Bootstrap JS и dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
