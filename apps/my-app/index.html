@@ -6,61 +6,11 @@
     <title>Budget Calculator</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #121212; /* Dark background for body */
-            color: #e0e0e0; /* Light text color */
-        }
-        .container {
-            max-width: 600px;
-            margin-top: 50px;
-            background-color: #1e1e1e; /* Dark background for container */
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .form-control {
-            background-color: #333; /* Dark background for input fields */
-            color: #e0e0e0; /* Light text color for input fields */
-            border: 1px solid #555; /* Darker border color */
-        }
-        .form-control::placeholder {
-            color: #888; /* Placeholder text color */
-        }
-        .btn-primary {
-            background-color: #bb86fc; /* Button color */
-            border-color: #bb86fc; /* Button border color */
-        }
-        .btn-primary:hover {
-            background-color: #9e6ffe; /* Button hover color */
-            border-color: #9e6ffe; /* Button border hover color */
-        }
-        .balance {
-            margin-top: 20px;
-        }
-        .expenses ul {
-            padding: 0;
-        }
-        .expenses ul li {
-            list-style-type: none;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #333; /* Dark background for expense items */
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            color: #e0e0e0; /* Light text color for expense items */
-        }
-        h2 {
-            color: #e0e0e0; /* Light color for headers */
-        }
-        .text-center {
-            color: #e0e0e0; /* Light color for text-center */
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your updated CSS -->
 </head>
 <body>
     <div class="container">
-        <div class="form-group">
+        <div class="form-group card-selection">
             <label for="cardSelect">Choose a card:</label>
             <select id="cardSelect" class="form-control">
                 <option value="card1">Deutsche Bank</option>
@@ -95,6 +45,8 @@
         </div>
         <div class="balance text-center">
             <h2>Remaining Balance: <span id="remainingBalance">€0.00</span></h2>
+            <div id="dailyLimit" class="mt-2"></div> <!-- Daily limit for Klarna -->
+            <div id="remainingDays" class="mt-2"></div> <!-- Remaining days for Klarna -->
         </div>
     </div>
 

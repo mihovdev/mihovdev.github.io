@@ -53,6 +53,28 @@ button {
     cursor: pointer;
 }
 
+.button-container {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.button-container button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn-edit {
+    background-color: #f0ad4e; /* Example color for Edit */
+}
+
+.btn-delete {
+    background-color: #d9534f; /* Example color for Delete */
+}
+
 button:hover {
     background-color: #9e6ffe; /* Button hover color */
 }
@@ -70,6 +92,7 @@ button:hover {
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
+    text-transform: uppercase;
 }
 
 #expenseList li button {
