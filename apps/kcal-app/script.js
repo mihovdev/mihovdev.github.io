@@ -10,15 +10,19 @@ document.getElementById('calorie-form').addEventListener('submit', function(e) {
     }
 
     const li = document.createElement('li');
-    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+    li.className = 'list-group-item';
     li.innerHTML = `${food}: ${calories} калории <button class="btn btn-danger btn-sm delete">X</button>`;
     document.getElementById('food-list').appendChild(li);
 
     updateRemainingCalories(calories, 'subtract');
 
+    // Automatically save data locally
+    saveData();
+
     document.getElementById('food').value = '';
     document.getElementById('calories').value = '';
 });
+
 
 document.getElementById('goal-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -53,23 +57,7 @@ document.getElementById('reset-btn').addEventListener('click', function() {
     localStorage.removeItem('goal');
 });
 
-document.getElementById('save-btn').addEventListener('click', function() {
-    saveData();
-});
 
-document.getElementById('modal-save-btn').addEventListener('click', function() {
-    saveData();
-    $('#exitModal').modal('hide');
-});
-
-window.addEventListener('beforeunload', function (e) {
-    if (document.getElementById('food-list').childElementCount > 0 || localStorage.getItem('goal')) {
-        e.preventDefault();
-        e.returnValue = '';
-        $('#exitModal').modal('show');
-        return '';
-    }
-});
 
 function saveData() {
     const foodList = [];
@@ -78,6 +66,7 @@ function saveData() {
     });
     localStorage.setItem('foodList', JSON.stringify(foodList));
     localStorage.setItem('remainingCalories', document.getElementById('remaining-calories').textContent);
+    localStorage.setItem('goal', document.getElementById('goal-display').textContent.replace('Зададена цел: ', '').replace(' калории', '') || '');
     alert('Данните са запазени локално.');
 }
 
