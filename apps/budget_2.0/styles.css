@@ -102,3 +102,15 @@ button:hover {
 #expenseList li button:hover {
     background: #c82333; /* Darker red for delete button hover */
 }
+hr{
+    background-color: #888;
+    width: 75%;
+}
+#dailyLimit{
+    font-size: large;
+}
+
+.made-by{
+    text-align: right;
+    font-size: x-small;
+}
