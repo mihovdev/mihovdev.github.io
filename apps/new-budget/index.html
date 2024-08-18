@@ -5,154 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance Manager</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <style>
-      body {
-    background-color: #343a40;
-    color: #f8f9fa;
-}
-
-.card {
-    background-color: #495057;
-    color: #f8f9fa;
-}
-
-.card-title {
-    font-size: 1.5rem;
-}
-
-.fixed-bottom-navbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-    background-color: #212529;
-    padding: 0.5rem 1rem;
-}
-
-.navbar-brand {
-    color: #f8f9fa;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    margin: 0;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    border: 1px solid transparent;
-}
-
-.navbar-brand:hover, .navbar-brand.active {
-    color: #ffffff;
-    background-color: #495057;
-    border-color: #343a40;
-}
-
-.navbar-brand.bw-bank {
-    background-color: #007bff;
-}
-
-.navbar-brand.db-bank {
-    background-color: #17a2b8;
-}
-
-.navbar-brand.klarna-card {
-    background-color: #c200a5;
-}
-
-.navbar-brand.bw-bank:hover {
-    background-color: #0056b3;
-}
-
-.navbar-brand.db-bank:hover {
-    background-color: #138496;
-}
-
-.navbar-brand.klarna-card:hover {
-    background-color: #9d01b2;
-}
-
-.container-fluid {
-    padding-bottom: 60px;
-}
-
-.card-container {
-    display: none;
-}
-
-.card-container.active {
-    display: block;
-}
-
-.entry-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.entry-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-}
-
-.entry-list li.income {
-    background-color: #28a745;
-    color: #ffffff;
-}
-
-.entry-list li.expense {
-    background-color: #dc3545;
-    color: #ffffff;
-}
-
-.entry-list .entry-delete, .entry-list .entry-pin {
-    color: #ffffff;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.entry-list .entry-pin i {
-    font-size: 1rem; /* Adjust as needed */
-}
-
-.entry-list .entry-pin i.pinned {
-    color: #ffd700; /* Gold color for pinned entries */
-}
-
-.entry-list .entry-pin i {
-    color: #ffffff; /* Default color for unpinned entries */
-}
-
-.entry-list .entry-delete i {
-    font-size: 1rem; /* Adjust as needed */
-}
-
-.reset-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #dc3545;
-
-}
-
-.reset-button:hover {
-    color: #ffffff;
-}
-
-@media (max-width: 576px) {
-    .navbar-brand {
-        font-size: 0.8rem;
-        text-align: center;
-    }
-}
-
+        body {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .card {
+            background-color: #495057;
+            color: #f8f9fa;
+        }
+        .card-title {
+            font-size: 1.5rem;
+        }
+        .fixed-bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: #212529;
+        }
+        .navbar-brand {
+            color: #f8f9fa;
+        }
+        .navbar-brand:hover {
+            color: #adb5bd;
+        }
+        .container-fluid {
+            padding-bottom: 60px;
+        }
+        .card-container {
+            display: none;
+        }
+        .card-container.active {
+            display: block;
+        }
+        .entry-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .entry-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .entry-list li.income {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        .entry-list li.expense {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+        .entry-list .entry-delete {
+            color: #ffffff;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .reset-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #dc3545;
+        }
+        .reset-button:hover {
+            color: #ffffff;
+        }
+        .navbar-brand.bw-bank {
+            color: #007bff;
+        }
+        .navbar-brand.db-bank {
+            color: #17a2b8;
+        }
+        .navbar-brand.klarna-card {
+            color: #ffc107;
+        }
     </style>
 </head>
 <body>
@@ -221,14 +152,131 @@
 
 <!-- Fixed Bottom Navbar -->
 <nav class="navbar navbar-light bg-dark fixed-bottom fixed-bottom-navbar">
-    <a class="navbar-brand bw-bank" href="#" onclick="showCard('bw-bank')">BW: €<span id="bw-bank-remaining">0</span></a>
-    <a class="navbar-brand db-bank" href="#" onclick="showCard('db-bank')">DB: €<span id="db-bank-remaining">0</span></a>
-    <a class="navbar-brand klarna-card" href="#" onclick="showCard('klarna')">CC: €<span id="klarna-remaining">0</span></a>
+    <a class="navbar-brand bw-bank" href="#" onclick="showCard('bw-bank')">BW Bank: €<span id="bw-bank-remaining">0</span></a>
+    <a class="navbar-brand db-bank" href="#" onclick="showCard('db-bank')">DB Bank: €<span id="db-bank-remaining">0</span></a>
+    <a class="navbar-brand klarna-card" href="#" onclick="showCard('klarna')">Klarna Card: €<span id="klarna-remaining">0</span></a>
 </nav>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        loadFromLocalStorage();
+    });
+
+    function updateBalance(id, amount) {
+        const balanceSpan = document.getElementById(id + '-balance');
+        let currentBalance = parseFloat(balanceSpan.textContent);
+        currentBalance += amount;
+        balanceSpan.textContent = currentBalance.toFixed(2);
+
+        // Update the remaining balance in the navbar
+        document.getElementById(id + '-remaining').textContent = currentBalance.toFixed(2);
+
+        saveToLocalStorage();
+    }
+
+    function addAmount(id) {
+        const amount = parseFloat(document.getElementById(id + '-amount').value);
+        const description = document.getElementById(id + '-description').value.trim();
+        if (!isNaN(amount) && amount > 0) {
+            updateBalance(id, amount);
+            addEntry(id, amount, description, 'income');
+        }
+    }
+
+    function subtractAmount(id) {
+        const amount = parseFloat(document.getElementById(id + '-amount').value);
+        const description = document.getElementById(id + '-description').value.trim();
+        if (!isNaN(amount) && amount > 0) {
+            updateBalance(id, -amount);
+            addEntry(id, -amount, description, 'expense');
+        }
+    }
+
+    function addEntry(id, amount, description, type) {
+        const entryList = document.getElementById(id + '-entries');
+        const entryItem = document.createElement('li');
+        entryItem.classList.add(type);
+        entryItem.innerHTML = `€${amount.toFixed(2)} <small>${description ? '- ' + description : ''}</small>`;
+        const deleteButton = document.createElement('span');
+        deleteButton.textContent = 'X';
+        deleteButton.classList.add('entry-delete');
+        deleteButton.onclick = function() {
+            entryList.removeChild(entryItem);
+            updateBalance(id, -amount);
+            saveToLocalStorage();
+        };
+        entryItem.appendChild(deleteButton);
+        entryList.appendChild(entryItem);
+
+        saveToLocalStorage();
+    }
+
+    function resetCard(id) {
+        // Reset balance to 0
+        document.getElementById(id + '-balance').textContent = '0.00';
+        document.getElementById(id + '-remaining').textContent = '0.00';
+        
+        // Clear entry list
+        const entryList = document.getElementById(id + '-entries');
+        while (entryList.firstChild) {
+            entryList.removeChild(entryList.firstChild);
+        }
+
+        saveToLocalStorage();
+    }
+
+    function showCard(cardId) {
+        const cards = document.querySelectorAll('.card-container');
+        cards.forEach(card => {
+            card.classList.remove('active');
+        });
+        document.getElementById(cardId + '-card').classList.add('active');
+    }
+
+    function saveToLocalStorage() {
+        const banks = ['bw-bank', 'db-bank', 'klarna'];
+        banks.forEach(bank => {
+            const balance = document.getElementById(bank + '-balance').textContent;
+            const entries = Array.from(document.getElementById(bank + '-entries').children).map(entry => ({
+                amount: entry.textContent.split(' ')[0].substring(1),
+                description: entry.querySelector('small') ? entry.querySelector('small').textContent.substring(2) : '',
+                type: entry.classList.contains('income') ? 'income' : 'expense'
+            }));
+            localStorage.setItem(bank + '-balance', balance);
+            localStorage.setItem(bank + '-entries', JSON.stringify(entries));
+        });
+    }
+
+    function loadFromLocalStorage() {
+        const banks = ['bw-bank', 'db-bank', 'klarna'];
+        banks.forEach(bank => {
+            const balance = localStorage.getItem(bank + '-balance');
+            const entries = JSON.parse(localStorage.getItem(bank + '-entries') || '[]');
+            if (balance !== null) {
+                document.getElementById(bank + '-balance').textContent = balance;
+                document.getElementById(bank + '-remaining').textContent = balance;
+            }
+            const entryList = document.getElementById(bank + '-entries');
+            entries.forEach(entry => {
+                const entryItem = document.createElement('li');
+                entryItem.classList.add(entry.type);
+                entryItem.innerHTML = `€${parseFloat(entry.amount).toFixed(2)} <small>${entry.description ? '- ' + entry.description : ''}</small>`;
+                const deleteButton = document.createElement('span');
+                deleteButton.textContent = 'X';
+                deleteButton.classList.add('entry-delete');
+                deleteButton.onclick = function() {
+                    entryList.removeChild(entryItem);
+                    updateBalance(bank, -parseFloat(entry.amount));
+                    saveToLocalStorage();
+                };
+                entryItem.appendChild(deleteButton);
+                entryList.appendChild(entryItem);
+            });
+        });
+    }
+</script>
 </body>
 </html>
