@@ -14,20 +14,38 @@ function updateBalance(id, amount) {
     saveToLocalStorage();
 }
 
+function addAmount(id) {
+    const amount = parseFloat(document.getElementById(id + '-amount').value);
+    let description = document.getElementById(id + '-description').value.trim();
+    description = description.toUpperCase(); // Convert description to uppercase
+    
+    if (!isNaN(amount) && amount > 0) {
+        updateBalance(id, amount);
+        addEntry(id, amount, description, 'income');
+        
+        // Clear the input fields
+        document.getElementById(id + '-amount').value = '';
+        document.getElementById(id + '-description').value = '';
+    }
+}
+
 function subtractAmount(id) {
     const amount = parseFloat(document.getElementById(id + '-amount').value);
-    const description = document.getElementById(id + '-description').value.trim();
+    let description = document.getElementById(id + '-description').value.trim();
+    description = description.toUpperCase(); // Convert description to uppercase
+    
     if (!isNaN(amount) && amount > 0) {
         updateBalance(id, -amount);
         addEntry(id, -amount, description, 'expense');
         
-        // Check if the expense is from the Klarna Card
         if (id === 'klarna') {
-            // Also subtract the amount from BW Bank
             updateBalance('bw-bank', -amount);
-            // Add the entry to BW Bank with a note indicating it's from Klarna
             addEntry('bw-bank', -amount, `${description} (Klarna)`, 'expense');
         }
+
+        // Clear the input fields
+        document.getElementById(id + '-amount').value = '';
+        document.getElementById(id + '-description').value = '';
     }
 }
 
@@ -42,19 +60,6 @@ function addEntry(id, amount, description, type) {
     deleteButton.onclick = function() {
         entryList.removeChild(entryItem);
         updateBalance(id, -amount);
-
-        // Also remove the corresponding entry from BW Bank if this is a Klarna expense
-        if (id === 'klarna') {
-            const bwBankEntries = document.getElementById('bw-bank-entries');
-            const bwBankEntryItems = bwBankEntries.querySelectorAll('li');
-            bwBankEntryItems.forEach(item => {
-                if (item.innerHTML.includes(`${description} (Klarna)`)) {
-                    bwBankEntries.removeChild(item);
-                    updateBalance('bw-bank', amount); // Revert the amount in BW Bank
-                }
-            });
-        }
-
         saveToLocalStorage();
     };
     entryItem.appendChild(deleteButton);
