@@ -1,0 +1,82 @@
+body {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+.card {
+    background-color: #495057;
+    color: #f8f9fa;
+}
+.card-title {
+    font-size: 1.5rem;
+}
+.fixed-bottom-navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: #494a4b;
+}
+.navbar-brand {
+    color: #f8f9fa;
+    margin:0;
+}
+.navbar-brand:hover {
+    color: #adb5bd;
+}
+.container-fluid {
+    padding-bottom: 60px;
+}
+.card-container {
+    display: none;
+}
+.card-container.active {
+    display: block;
+}
+.entry-list {
+    list-style: none;
+    padding-left: 0;
+}
+.entry-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+.entry-list li.income {
+    background-color: #28a745;
+    color: #ffffff;
+}
+.entry-list li.expense {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+.entry-list .entry-delete {
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.reset-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #dc3545;
+}
+.reset-button:hover {
+    color: #ffffff;
+}
+.navbar-brand.bw-bank {
+    color: #ffffff;
+
+}
+.navbar-brand.db-bank {
+    color: #ffffff;
+
+}
+.navbar-brand.klarna-card {
+    color: #ffffff;
+
+}
