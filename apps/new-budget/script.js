@@ -53,20 +53,54 @@ function addEntry(id, amount, description, type) {
     const entryList = document.getElementById(id + '-entries');
     const entryItem = document.createElement('li');
     entryItem.classList.add(type);
-    entryItem.innerHTML = `€${amount.toFixed(2)} <small>${description ? '- ' + description : ''}</small>`;
+    entryItem.innerHTML = `€${amount.toFixed(2)} <strong>${description ? '- ' + description : ''}</strong>`;
+
+    // Create a container for the icons
+    const iconContainer = document.createElement('div');
+    iconContainer.classList.add('icon-container');
+
+    // Create the pin button with a Font Awesome icon
+    const pinButton = document.createElement('span');
+    pinButton.innerHTML = '<i class="fas fa-thumbtack"></i>'; // Unpinned icon
+    pinButton.classList.add('entry-pin');
+    pinButton.onclick = function() {
+        if (pinButton.classList.contains('pinned')) {
+            // If it's currently pinned, unpin it
+            pinButton.innerHTML = '<i class="fas fa-thumbtack"></i>'; // Unpinned icon
+            pinButton.classList.remove('pinned');
+            entryList.removeChild(entryItem);
+            entryList.appendChild(entryItem); // Move to the bottom
+        } else {
+            // If it's currently unpinned, pin it
+            pinButton.innerHTML = '<i class="fas fa-thumbtack" style="transform: rotate(45deg);"></i>'; // Pinned icon
+            pinButton.classList.add('pinned');
+            entryList.removeChild(entryItem);
+            entryList.prepend(entryItem); // Move to the top
+        }
+        saveToLocalStorage();
+    };
+
+    // Create the delete button with a Font Awesome icon
     const deleteButton = document.createElement('span');
-    deleteButton.textContent = 'X';
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
     deleteButton.classList.add('entry-delete');
     deleteButton.onclick = function() {
         entryList.removeChild(entryItem);
         updateBalance(id, -amount);
         saveToLocalStorage();
     };
-    entryItem.appendChild(deleteButton);
+
+    // Append the buttons to the icon container
+    iconContainer.appendChild(pinButton);
+    iconContainer.appendChild(deleteButton);
+
+    // Append the icon container to the entry item
+    entryItem.appendChild(iconContainer);
     entryList.appendChild(entryItem);
 
     saveToLocalStorage();
 }
+
 
 function resetCard(id) {
     // Reset balance to 0

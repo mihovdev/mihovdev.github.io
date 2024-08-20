@@ -36,15 +36,44 @@ body {
 .entry-list {
     list-style: none;
     padding-left: 0;
+    margin: 0; /* Ensure no extra margins */
 }
 .entry-list li {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Vertically align items */
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     border-radius: 0.25rem;
+    background-color: #495057; /* Ensure background for visibility */
+    overflow: hidden; /* Prevent overflow of content */
 }
+
+.entry-list li span {
+    white-space: nowrap; /* Prevent wrapping of text */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+}
+
+
+/* Container for the icons to keep them side by side */
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon-container .entry-pin,
+.icon-container .entry-delete {
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.icon-container .entry-pin:hover,
+.icon-container .entry-delete:hover {
+    color: #adb5bd;
+}
+
 .entry-list li.income {
     background-color: #28a745;
     color: #ffffff;
@@ -58,6 +87,34 @@ body {
     cursor: pointer;
     margin-left: 10px;
 }
+.entry-list .entry-delete, .entry-list .entry-pin {
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.entry-list .entry-pin {
+    margin-right: 10px;
+}
+
+.entry-list .entry-delete:hover, .entry-list .entry-pin:hover {
+    color: #adb5bd;
+}
+
+.entry-list .entry-delete:focus, .entry-list .entry-pin:focus {
+    outline: 2px solid #adb5bd;
+    outline-offset: 2px;
+}
+
+.entry-list .entry-pin .fas.fa-thumbtack {
+    transition: transform 0.3s ease;
+}
+
+.entry-list .entry-pin.pinned .fas.fa-thumbtack {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
 .reset-button {
     position: absolute;
     top: 10px;

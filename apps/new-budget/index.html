@@ -6,6 +6,8 @@
     <title>Finance Manager</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 <body>
 
@@ -17,7 +19,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">BW Bank</h5>
                     <span class="reset-button" onclick="resetCard('bw-bank')">Reset</span>
-                    <h6 class="card-subtitle mb-2 text-muted">Balance: €<span id="bw-bank-balance">0</span></h6>
+                    <h3 class="card-subtitle mb-2">Balance: €<span id="bw-bank-balance">0</span></h6>
                     <div class="input-group">
                         <input type="number" class="form-control" id="bw-bank-amount" placeholder="Enter amount">
                         <div class="input-group-append">
@@ -34,9 +36,9 @@
         <div class="col-12 mb-3 card-container" id="db-bank-card">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title">DB Bank</h5>
+                    <h5 class="card-title">Deutsche Bank</h5>
                     <span class="reset-button" onclick="resetCard('db-bank')">Reset</span>
-                    <h6 class="card-subtitle mb-2 text-muted">Balance: €<span id="db-bank-balance">0</span></h6>
+                    <h3 class="card-subtitle mb-2">Balance: €<span id="db-bank-balance">0</span></h6>
                     <div class="input-group">
                         <input type="number" class="form-control" id="db-bank-amount" placeholder="Enter amount">
                         <div class="input-group-append">
@@ -55,7 +57,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Klarna Card</h5>
                     <span class="reset-button" onclick="resetCard('klarna')">Reset</span>
-                    <h6 class="card-subtitle mb-2 text-muted">Balance: €<span id="klarna-balance">0</span></h6>
+                    <h3 class="card-subtitle mb-2">Balance: €<span id="klarna-balance">0</span></h6>
                     <div class="input-group">
                         <input type="number" class="form-control" id="klarna-amount" placeholder="Enter amount">
                         <div class="input-group-append">
