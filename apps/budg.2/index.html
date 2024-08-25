@@ -33,9 +33,7 @@
             background-color: #495057;
             color: #f8f9fa;
             border: 1px solid #6c757d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            
         }
         .list-group-item i {
             cursor: pointer;
@@ -209,10 +207,8 @@
                 listItem.className = 'list-group-item';
                 listItem.innerHTML = `
                     ${transaction.category}: €${transaction.amount.toFixed(2)} (${transaction.type})
-                    <div>
-                        <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
-                        <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
-                    </div>
+                    <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
+                    <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
                 `;
                 transactionsList.appendChild(listItem);
 
