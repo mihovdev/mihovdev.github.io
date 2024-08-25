@@ -30,18 +30,27 @@
             align-items: center;
         }
         .list-group-item {
-            background-color: #495057;
-            color: #f8f9fa;
-            border: 1px solid #6c757d;
-            
-        }
-        .list-group-item i {
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .list-group-item i:hover {
-            color: #adb5bd;
-        }
+    background-color: #495057;
+    color: #f8f9fa;
+    border: 1px solid #6c757d;
+    display: flex;
+    justify-content: space-between; /* Aligns content to both sides */
+    align-items: center; /* Centers content vertically */
+}
+
+.list-group-item i {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.list-group-item i:hover {
+    color: #adb5bd;
+}
+
+.list-group-item .icon-container {
+    display: flex;
+    gap: 10px;
+}
         .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
@@ -82,6 +91,36 @@
         #transaction-form-section {
             display: none; /* Hidden by default */
         }
+
+        .info-box {
+    background-color: #404040; /* Light grey background for each box */
+    border: 1px solid #ccc;    /* Border around each box */
+    border-radius: 5px;        /* Rounded corners */
+    padding: 10px;             /* Padding inside each box */
+    text-align: center;        /* Center-align text */
+    width: 150px;              /* Fixed width for each box */
+}
+.signs {
+    font-size: 24px;                    /* Increase font size for visibility */
+    line-height: 1;                     /* Ensure the signs are centered */
+    display: flex;                      /* Use Flexbox for alignment */
+    align-items: center;                /* Vertically center the sign */
+    justify-content: center;            /* Center the sign horizontally */
+}
+.signs {
+        margin: 10px 0;                 /* Space around signs on mobile */
+    }
+#summary-section {
+    display: flex;           /* Use Flexbox for layout */
+    justify-content: space-between; /* Space out the boxes */
+    padding: 10px;          /* Add some padding around the content */
+}
+#summary-section h6 {
+    margin: 0;                 /* Remove default margins */
+}
+#toggle-transaction-form, #toggle-summary, #toggle-transactions-list{
+    color: #ccc;
+}
     </style>
 </head>
 <body>
@@ -131,9 +170,12 @@
                 <i class="fas fa-chevron-down toggle-btn" id="toggle-summary" onclick="toggleSection('summary-section', this)"></i>
             </div>
             <div class="card-body" id="summary-section">
-                <h5>Income: <span id="income-total">€0.00</span></h5>
-                <h5>Expenses: <span id="expense-total">€0.00</span></h5>
-                <h4>Balance: <span id="balance">€0.00</span></h4>
+                <h6 class="info-box">Income: <span id="income-total">€0.00</span></h6>
+                <div class="signs">-</div>
+                <h6 class="info-box">Expenses: <span id="expense-total">€0.00</span></h6>
+                <div class="signs">=</div>
+
+                <h6 class="info-box">Balance: <span id="balance">€0.00</span></h6>
             </div>
         </div>
 
@@ -195,39 +237,41 @@
         let incomeTotal = 0;
         let expenseTotal = 0;
         let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
+    
         function updateUI() {
             const transactionsList = document.getElementById('transactions-list');
             transactionsList.innerHTML = '';
             incomeTotal = 0;
             expenseTotal = 0;
-
+    
             transactions.forEach((transaction, index) => {
                 const listItem = document.createElement('li');
                 listItem.className = 'list-group-item';
                 listItem.innerHTML = `
-                    ${transaction.category}: €${transaction.amount.toFixed(2)} (${transaction.type})
-                    <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
-                    <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
+                    <span>${transaction.category}: €${transaction.amount.toFixed(2)} (${transaction.type})</span>
+                    <div class="icon-container">
+                        <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
+                        <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
+                    </div>
                 `;
                 transactionsList.appendChild(listItem);
-
+    
                 if (transaction.type === 'income') {
                     incomeTotal += transaction.amount;
                 } else {
                     expenseTotal += transaction.amount;
                 }
             });
-
+    
             document.getElementById('income-total').textContent = `€${incomeTotal.toFixed(2)}`;
             document.getElementById('expense-total').textContent = `€${expenseTotal.toFixed(2)}`;
             document.getElementById('balance').textContent = `€${(incomeTotal - expenseTotal).toFixed(2)}`;
         }
-
+    
         function saveToLocalStorage() {
             localStorage.setItem('transactions', JSON.stringify(transactions));
         }
-
+    
         function editTransaction(index) {
             const transaction = transactions[index];
             document.getElementById('transaction-type').value = transaction.type;
@@ -235,13 +279,13 @@
             document.getElementById('transaction-amount').value = transaction.amount;
             document.getElementById('transaction-form').dataset.editIndex = index;
         }
-
+    
         function deleteTransaction(index) {
             transactions.splice(index, 1);
             saveToLocalStorage();
             updateUI();
         }
-
+    
         function toggleSection(sectionId, button) {
             const section = document.getElementById(sectionId);
             if (section.style.display === 'none' || section.style.display === '') {
@@ -252,11 +296,11 @@
                 button.classList.remove('rotate');
             }
         }
-
+    
         function showQuickExpenseModal() {
             $('#quickExpenseModal').modal('show');
         }
-
+    
         function addQuickExpense() {
             const amount = parseFloat(document.getElementById('quick-expense-amount').value);
             if (!isNaN(amount) && amount > 0) {
@@ -268,35 +312,36 @@
                 alert('Please enter a valid amount.');
             }
         }
-
+    
         document.getElementById('transaction-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
+    
             const type = document.getElementById('transaction-type').value;
             const category = document.getElementById('transaction-category').value;
             const amount = parseFloat(document.getElementById('transaction-amount').value);
-
+    
             if (!type || !category || isNaN(amount)) {
                 alert('Please fill out all fields correctly.');
                 return;
             }
-
+    
             const editIndex = document.getElementById('transaction-form').dataset.editIndex;
-
+    
             if (editIndex !== undefined) {
                 transactions[editIndex] = { type, category, amount };
                 delete document.getElementById('transaction-form').dataset.editIndex;
             } else {
                 transactions.push({ type, category, amount });
             }
-
+    
             saveToLocalStorage();
             updateUI();
-
+    
             document.getElementById('transaction-form').reset();
         });
-
+    
         updateUI();
     </script>
+    
 </body>
 </html>
