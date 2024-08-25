@@ -10,10 +10,17 @@
         body {
             background-color: #343a40;
             color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            margin-top: 20px;
         }
         .card {
             background-color: #495057;
             border-color: #6c757d;
+            margin-bottom: 20px;
         }
         .card-header {
             background-color: #6c757d;
@@ -66,10 +73,16 @@
         .rotate {
             transform: rotate(180deg);
         }
+        @media (max-width: 767px) {
+            .card-header h4 {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <h1 class="text-center">Simple Budgeting App</h1>
 
         <!-- Add Transaction Form -->
         <div class="card">
@@ -198,7 +211,7 @@
 
         function toggleSection(sectionId, button) {
             const section = document.getElementById(sectionId);
-            if (section.style.display === 'none') {
+            if (section.style.display === 'none' || section.style.display === '') {
                 section.style.display = 'block';
                 button.classList.add('rotate');
             } else {
