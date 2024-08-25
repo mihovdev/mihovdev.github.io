@@ -33,6 +33,9 @@
             background-color: #495057;
             color: #f8f9fa;
             border: 1px solid #6c757d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .list-group-item i {
             cursor: pointer;
@@ -78,11 +81,13 @@
                 font-size: 16px;
             }
         }
+        #transaction-form-section {
+            display: none; /* Hidden by default */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center">Simple Budgeting App</h1>
 
         <!-- Add Transaction Form -->
         <div class="card">
@@ -149,9 +154,39 @@
     </div>
 
     <!-- Floating Button for Quick Expense Addition -->
-    <button class="floating-btn" onclick="addQuickExpense()">
+    <button class="floating-btn" onclick="showQuickExpenseModal()">
         <i class="fas fa-minus"></i>
     </button>
+
+    <!-- Modal for Quick Expense -->
+    <div class="modal fade" id="quickExpenseModal" tabindex="-1" role="dialog" aria-labelledby="quickExpenseModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quickExpenseModalLabel">Quick Expense</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="quick-expense-form">
+                        <div class="form-group">
+                            <label for="quick-expense-amount">Amount (EUR)</label>
+                            <input type="number" class="form-control" id="quick-expense-amount" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quick-expense-category">Category</label>
+                            <input type="text" class="form-control" id="quick-expense-category" value="Quick Expense" readonly>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addQuickExpense()">Add Expense</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -174,8 +209,10 @@
                 listItem.className = 'list-group-item';
                 listItem.innerHTML = `
                     ${transaction.category}: €${transaction.amount.toFixed(2)} (${transaction.type})
-                    <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
-                    <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
+                    <div>
+                        <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
+                        <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
+                    </div>
                 `;
                 transactionsList.appendChild(listItem);
 
@@ -220,12 +257,17 @@
             }
         }
 
+        function showQuickExpenseModal() {
+            $('#quickExpenseModal').modal('show');
+        }
+
         function addQuickExpense() {
-            const amount = parseFloat(prompt('Enter the expense amount in EUR:'));
+            const amount = parseFloat(document.getElementById('quick-expense-amount').value);
             if (!isNaN(amount) && amount > 0) {
                 transactions.push({ type: 'expense', category: 'Quick Expense', amount });
                 saveToLocalStorage();
                 updateUI();
+                $('#quickExpenseModal').modal('hide');
             } else {
                 alert('Please enter a valid amount.');
             }
