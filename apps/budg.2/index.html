@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Budgeting App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .card {
+            background-color: #495057;
+            border-color: #6c757d;
+        }
+        .card-header {
+            background-color: #6c757d;
+            border-bottom: 1px solid #6c757d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .list-group-item {
+            background-color: #495057;
+            color: #f8f9fa;
+            border: 1px solid #6c757d;
+        }
+        .list-group-item i {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .list-group-item i:hover {
+            color: #adb5bd;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .toggle-btn {
+            cursor: pointer;
+            color: #007bff;
+            transition: transform 0.3s ease;
+        }
+        .rotate {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Add Transaction Form -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Add Transaction</h4>
+                <i class="fas fa-chevron-down toggle-btn" id="toggle-transaction-form" onclick="toggleSection('transaction-form-section', this)"></i>
+            </div>
+            <div class="card-body" id="transaction-form-section">
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="transaction-type">Type</label>
+                        <select class="form-control" id="transaction-type" required>
+                            <option value="">Select Type</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-category">Category</label>
+                        <select class="form-control" id="transaction-category" required>
+                            <option value="">Select Category</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Food">Food</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <!-- Add more categories as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-amount">Amount</label>
+                        <input type="number" class="form-control" id="transaction-amount" placeholder="Amount in EUR" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Transaction</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Summary Card -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Summary</h4>
+                <i class="fas fa-chevron-down toggle-btn" id="toggle-summary" onclick="toggleSection('summary-section', this)"></i>
+            </div>
+            <div class="card-body" id="summary-section">
+                <h5>Income: <span id="income-total">€0.00</span></h5>
+                <h5>Expenses: <span id="expense-total">€0.00</span></h5>
+                <h4>Balance: <span id="balance">€0.00</span></h4>
+            </div>
+        </div>
+
+        <!-- Transactions List -->
+        <div class="card">
+            <div class="card-header">
+                <h4>Transactions</h4>
+                <i class="fas fa-chevron-down toggle-btn" id="toggle-transactions-list" onclick="toggleSection('transactions-list-section', this)"></i>
+            </div>
+            <div class="card-body" id="transactions-list-section">
+                <ul class="list-group" id="transactions-list">
+                    <!-- List items will be added here dynamically -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Button for Quick Expense Addition -->
+    <button class="floating-btn" onclick="addQuickExpense()">
+        <i class="fas fa-minus"></i>
+    </button>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Initialize totals and transactions list
+        let incomeTotal = 0;
+        let expenseTotal = 0;
+        let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+        function updateUI() {
+            const transactionsList = document.getElementById('transactions-list');
+            transactionsList.innerHTML = '';
+            incomeTotal = 0;
+            expenseTotal = 0;
+
+            transactions.forEach((transaction, index) => {
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.innerHTML = `
+                    ${transaction.category}: €${transaction.amount.toFixed(2)} (${transaction.type})
+                    <i class="fas fa-edit" onclick="editTransaction(${index})"></i>
+                    <i class="fas fa-trash-alt" onclick="deleteTransaction(${index})"></i>
+                `;
+                transactionsList.appendChild(listItem);
+
+                if (transaction.type === 'income') {
+                    incomeTotal += transaction.amount;
+                } else {
+                    expenseTotal += transaction.amount;
+                }
+            });
+
+            document.getElementById('income-total').textContent = `€${incomeTotal.toFixed(2)}`;
+            document.getElementById('expense-total').textContent = `€${expenseTotal.toFixed(2)}`;
+            document.getElementById('balance').textContent = `€${(incomeTotal - expenseTotal).toFixed(2)}`;
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+        }
+
+        function editTransaction(index) {
+            const transaction = transactions[index];
+            document.getElementById('transaction-type').value = transaction.type;
+            document.getElementById('transaction-category').value = transaction.category;
+            document.getElementById('transaction-amount').value = transaction.amount;
+            document.getElementById('transaction-form').dataset.editIndex = index;
+        }
+
+        function deleteTransaction(index) {
+            transactions.splice(index, 1);
+            saveToLocalStorage();
+            updateUI();
+        }
+
+        function toggleSection(sectionId, button) {
+            const section = document.getElementById(sectionId);
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+                button.classList.add('rotate');
+            } else {
+                section.style.display = 'none';
+                button.classList.remove('rotate');
+            }
+        }
+
+        function addQuickExpense() {
+            const amount = parseFloat(prompt('Enter the expense amount in EUR:'));
+            if (!isNaN(amount) && amount > 0) {
+                transactions.push({ type: 'expense', category: 'Quick Expense', amount });
+                saveToLocalStorage();
+                updateUI();
+            } else {
+                alert('Please enter a valid amount.');
+            }
+        }
+
+        document.getElementById('transaction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const type = document.getElementById('transaction-type').value;
+            const category = document.getElementById('transaction-category').value;
+            const amount = parseFloat(document.getElementById('transaction-amount').value);
+
+            if (!type || !category || isNaN(amount)) {
+                alert('Please fill out all fields correctly.');
+                return;
+            }
+
+            const editIndex = document.getElementById('transaction-form').dataset.editIndex;
+
+            if (editIndex !== undefined) {
+                transactions[editIndex] = { type, category, amount };
+                delete document.getElementById('transaction-form').dataset.editIndex;
+            } else {
+                transactions.push({ type, category, amount });
+            }
+
+            saveToLocalStorage();
+            updateUI();
+
+            document.getElementById('transaction-form').reset();
+        });
+
+        updateUI();
+    </script>
+</body>
+</html>
