@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    h4 {
+      color: #ffffff;
+    }
+    .card {
+      background-color: #1e1e1e;
+    }
+    .btn-dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+    .fixed-bottom-nav {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      padding: 10px;
+    }
+    .remaining-budget {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <!-- Monthly Income and Expenses for Card 1 -->
+    <div id="card1Section">
+      <div class="row">
+        <!-- Monthly Income Card -->
+        <div class="col-12 mb-3">
+          <div class="card p-3">
+            <h4>Card 1 - Monthly Income (€)</h4>
+            <input type="number" id="incomeInputCard1" class="form-control" placeholder="Enter your income">
+            <button class="btn btn-dark-mode mt-2" onclick="saveIncome('Card1')">Save Income</button>
+          </div>
+        </div>
+
+        <!-- Expenses Card -->
+        <div class="col-12 mb-3">
+          <div class="card p-3">
+            <h4>Card 1 - Expenses</h4>
+            <input type="text" id="expenseNameCard1" class="form-control mb-2" placeholder="Expense name">
+            <input type="number" id="expenseAmountCard1" class="form-control mb-2" placeholder="Amount (€)">
+            <button class="btn btn-dark-mode" onclick="addExpense('Card1')">Add Expense</button>
+            <ul class="list-group mt-3" id="expensesListCard1"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Income and Expenses for Card 2 -->
+    <div id="card2Section" style="display: none;">
+      <div class="row">
+        <!-- Monthly Income Card -->
+        <div class="col-12 mb-3">
+          <div class="card p-3">
+            <h4>Card 2 - Monthly Income (€)</h4>
+            <input type="number" id="incomeInputCard2" class="form-control" placeholder="Enter your income">
+            <button class="btn btn-dark-mode mt-2" onclick="saveIncome('Card2')">Save Income</button>
+          </div>
+        </div>
+
+        <!-- Expenses Card -->
+        <div class="col-12 mb-3">
+          <div class="card p-3">
+            <h4>Card 2 - Expenses</h4>
+            <input type="text" id="expenseNameCard2" class="form-control mb-2" placeholder="Expense name">
+            <input type="number" id="expenseAmountCard2" class="form-control mb-2" placeholder="Amount (€)">
+            <button class="btn btn-dark-mode" onclick="addExpense('Card2')">Add Expense</button>
+            <ul class="list-group mt-3" id="expensesListCard2"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Bottom Navbar for Switching Cards and Remaining Budget -->
+  <nav class="navbar fixed-bottom fixed-bottom-nav d-flex justify-content-between">
+    <div class="btn-group">
+      <button class="btn btn-dark-mode" onclick="showCardSection('Card1')">Debit Card 1</button>
+      <button class="btn btn-dark-mode" onclick="showCardSection('Card2')">Debit Card 2</button>
+    </div>
+    <div class="remaining-budget" id="remainingBudgetCard1">€0.00</div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Load income and expenses on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadIncome('Card1');
+      loadIncome('Card2');
+      loadExpenses('Card1');
+      loadExpenses('Card2');
+    });
+
+    // Show the selected card section
+    function showCardSection(card) {
+      if (card === 'Card1') {
+        document.getElementById('card1Section').style.display = 'block';
+        document.getElementById('card2Section').style.display = 'none';
+        updateRemainingBudgetDisplay(card);
+      } else {
+        document.getElementById('card1Section').style.display = 'none';
+        document.getElementById('card2Section').style.display = 'block';
+        updateRemainingBudgetDisplay(card);
+      }
+    }
+
+    // Save income to localStorage
+    function saveIncome(card) {
+      const incomeInput = document.getElementById(`incomeInput${card}`).value;
+      localStorage.setItem(`monthlyIncome${card}`, incomeInput);
+      calculateRemainingBudget(card);
+      alert('Income saved!');
+    }
+
+    // Load income from localStorage
+    function loadIncome(card) {
+      const income = localStorage.getItem(`monthlyIncome${card}`);
+      if (income) {
+        document.getElementById(`incomeInput${card}`).value = income;
+        calculateRemainingBudget(card);
+      }
+    }
+
+    // Add expense to the list
+    function addExpense(card) {
+      const name = document.getElementById(`expenseName${card}`).value;
+      const amount = document.getElementById(`expenseAmount${card}`).value;
+      if (name && amount) {
+        const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
+        expenses.push({ name, amount: parseFloat(amount) });
+        localStorage.setItem(`expenses${card}`, JSON.stringify(expenses));
+        loadExpenses(card);
+        document.getElementById(`expenseName${card}`).value = '';
+        document.getElementById(`expenseAmount${card}`).value = '';
+      } else {
+        alert('Please fill out both fields.');
+      }
+    }
+
+    // Load expenses from localStorage
+    function loadExpenses(card) {
+      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
+      const expensesList = document.getElementById(`expensesList${card}`);
+      expensesList.innerHTML = '';
+      expenses.forEach((expense, index) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.innerHTML = `
+          ${expense.name}: €${expense.amount.toFixed(2)}
+          <div>
+            <button class="btn btn-sm btn-secondary me-2" onclick="editExpense('${card}', ${index})">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="removeExpense('${card}', ${index})">Delete</button>
+          </div>
+        `;
+        expensesList.appendChild(li);
+      });
+      calculateRemainingBudget(card);
+    }
+
+    // Edit expense
+    function editExpense(card, index) {
+      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
+      const expense = expenses[index];
+      document.getElementById(`expenseName${card}`).value = expense.name;
+      document.getElementById(`expenseAmount${card}`).value = expense.amount;
+      removeExpense(card, index);
+    }
+
+    // Remove expense from the list
+    function removeExpense(card, index) {
+      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
+      expenses.splice(index, 1);
+      localStorage.setItem(`expenses${card}`, JSON.stringify(expenses));
+      loadExpenses(card);
+    }
+
+    // Calculate the remaining budget
+    function calculateRemainingBudget(card) {
+      const income = parseFloat(localStorage.getItem(`monthlyIncome${card}`)) || 0;
+      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
+      const totalExpenses = expenses.reduce((total, expense) => total + expense.amount, 0);
+      const remainingBudget = income - totalExpenses;
+      localStorage.setItem(`remainingBudget${card}`, remainingBudget);
+      updateRemainingBudgetDisplay(card);
+    }
+
+    // Update the remaining budget display in the navbar
+    function updateRemainingBudgetDisplay(card) {
+      const remainingBudget = localStorage.getItem(`remainingBudget${card}`) || 0;
+      document.getElementById('remainingBudgetCard1').innerText = `€${parseFloat(remainingBudget).toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
