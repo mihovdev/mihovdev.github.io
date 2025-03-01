@@ -4,203 +4,891 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Budget Tracker</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    :root {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --bg-card: #2d2d2d;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --accent: #6200ee;
+      --accent-light: #bb86fc;
+      --success: #03dac6;
+      --error: #cf6679;
+      --border-radius: 12px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
     body {
-      background-color: #121212;
-      color: #ffffff;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 80px; /* Space for navbar */
     }
-    h4 {
-      color: #ffffff;
+    
+    header {
+      background-color: var(--bg-secondary);
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    .card {
-      background-color: #1e1e1e;
-    }
-    .btn-dark-mode {
-      background-color: #333;
-      color: #fff;
-    }
-    .fixed-bottom-nav {
-      background-color: #1e1e1e;
-      color: #ffffff;
-      padding: 10px;
-    }
-    .remaining-budget {
+    
+    h1 {
       font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    
+    .total-balance {
+      font-size: 2rem;
       font-weight: bold;
+      margin: 10px 0;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    
+    .card {
+      background-color: var(--bg-card);
+      border-radius: var(--border-radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    
+    .card-balance {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    
+    .connected-tag {
+      background-color: var(--success);
+      color: black;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      margin-left: 8px;
+    }
+    
+    .transactions {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #3a3a3a;
+    }
+    
+    .transaction:last-child {
+      border-bottom: none;
+    }
+    
+    .transaction-details {
+      flex: 1;
+    }
+    
+    .transaction-name {
+      font-weight: medium;
+    }
+    
+    .transaction-date {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    
+    .transaction-amount {
+      font-weight: bold;
+    }
+    
+    .expense {
+      color: var(--error);
+    }
+    
+    .income {
+      color: var(--success);
+    }
+    
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-secondary);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-button {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .nav-button.active {
+      color: var(--accent-light);
+    }
+    
+    .nav-icon {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background-color: var(--bg-secondary);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+    
+    .button-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    button {
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: none;
+      background-color: var(--accent);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    button.cancel {
+      background-color: transparent;
+      border: 1px solid #444;
+      color: var(--text-secondary);
+    }
+    
+    .section-title {
+      margin: 20px 0 10px;
+      color: var(--text-secondary);
+    }
+    
+    .accounts-section {
+      margin-bottom: 20px;
+    }
+    
+    .no-transactions {
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .overview-chart {
+      height: 200px;
+      margin: 20px 0;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .settings-option {
+      padding: 16px;
+      border-bottom: 1px solid #3a3a3a;
+    }
+    
+    .settings-option:last-child {
+      border-bottom: none;
     }
   </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <!-- Monthly Income and Expenses for Card 1 -->
-    <div id="card1Section">
-      <div class="row">
-        <!-- Monthly Income Card -->
-        <div class="col-12 mb-3">
-          <div class="card p-3">
-            <h4>Card 1 - Monthly Income (€)</h4>
-            <input type="number" id="incomeInputCard1" class="form-control" placeholder="Enter your income">
-            <button class="btn btn-dark-mode mt-2" onclick="saveIncome('Card1')">Save Income</button>
+  <header>
+    <h1>Budget Tracker</h1>
+    <div class="total-balance">€<span id="total-balance">0.00</span></div>
+  </header>
+  
+  <div class="container">
+    <!-- Dashboard Tab -->
+    <div id="dashboard-tab" class="tab-content active">
+      <div class="accounts-section">
+        <h2 class="section-title">Your Accounts</h2>
+        
+        <!-- Debit Card 1 -->
+        <div class="card" data-account-id="debit1">
+          <div class="card-header">
+            <div>
+              <span class="card-title">Main Debit Card</span>
+            </div>
+            <span class="card-balance">€<span id="debit1-balance">0.00</span></span>
+          </div>
+          <div class="transactions" id="debit1-transactions">
+            <div class="no-transactions">No recent transactions</div>
           </div>
         </div>
-
-        <!-- Expenses Card -->
-        <div class="col-12 mb-3">
-          <div class="card p-3">
-            <h4>Card 1 - Expenses</h4>
-            <input type="text" id="expenseNameCard1" class="form-control mb-2" placeholder="Expense name">
-            <input type="number" id="expenseAmountCard1" class="form-control mb-2" placeholder="Amount (€)">
-            <button class="btn btn-dark-mode" onclick="addExpense('Card1')">Add Expense</button>
-            <ul class="list-group mt-3" id="expensesListCard1"></ul>
+        
+        <!-- Debit Card 2 -->
+        <div class="card" data-account-id="debit2">
+          <div class="card-header">
+            <div>
+              <span class="card-title">Secondary Debit Card</span>
+            </div>
+            <span class="card-balance">€<span id="debit2-balance">0.00</span></span>
+          </div>
+          <div class="transactions" id="debit2-transactions">
+            <div class="no-transactions">No recent transactions</div>
+          </div>
+        </div>
+        
+        <!-- Credit Card -->
+        <div class="card" data-account-id="credit1">
+          <div class="card-header">
+            <div>
+              <span class="card-title">Credit Card</span>
+              <span class="connected-tag">Connected to Main</span>
+            </div>
+            <span class="card-balance">€<span id="credit1-balance">0.00</span></span>
+          </div>
+          <div class="transactions" id="credit1-transactions">
+            <div class="no-transactions">No recent transactions</div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Monthly Income and Expenses for Card 2 -->
-    <div id="card2Section" style="display: none;">
-      <div class="row">
-        <!-- Monthly Income Card -->
-        <div class="col-12 mb-3">
-          <div class="card p-3">
-            <h4>Card 2 - Monthly Income (€)</h4>
-            <input type="number" id="incomeInputCard2" class="form-control" placeholder="Enter your income">
-            <button class="btn btn-dark-mode mt-2" onclick="saveIncome('Card2')">Save Income</button>
-          </div>
+    
+    <!-- Transactions Tab -->
+    <div id="transactions-tab" class="tab-content">
+      <h2 class="section-title">Recent Transactions</h2>
+      <div id="all-transactions">
+        <div class="no-transactions">No transactions recorded yet</div>
+      </div>
+    </div>
+    
+    <!-- Stats Tab -->
+    <div id="stats-tab" class="tab-content">
+      <h2 class="section-title">Monthly Overview</h2>
+      <div class="card">
+        <canvas id="overview-chart" class="overview-chart"></canvas>
+      </div>
+      
+      <h2 class="section-title">Spending by Category</h2>
+      <div class="card">
+        <canvas id="category-chart" class="overview-chart"></canvas>
+      </div>
+    </div>
+    
+    <!-- Settings Tab -->
+    <div id="settings-tab" class="tab-content">
+      <div class="card">
+        <div class="settings-option" id="export-data">
+          <h3>Export Data</h3>
+          <p>Download your transaction data as CSV</p>
         </div>
-
-        <!-- Expenses Card -->
-        <div class="col-12 mb-3">
-          <div class="card p-3">
-            <h4>Card 2 - Expenses</h4>
-            <input type="text" id="expenseNameCard2" class="form-control mb-2" placeholder="Expense name">
-            <input type="number" id="expenseAmountCard2" class="form-control mb-2" placeholder="Amount (€)">
-            <button class="btn btn-dark-mode" onclick="addExpense('Card2')">Add Expense</button>
-            <ul class="list-group mt-3" id="expensesListCard2"></ul>
-          </div>
+        <div class="settings-option" id="clear-data">
+          <h3>Clear All Data</h3>
+          <p>Delete all transactions and reset accounts</p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Fixed Bottom Navbar for Switching Cards and Remaining Budget -->
-  <nav class="navbar fixed-bottom fixed-bottom-nav d-flex justify-content-between">
-    <div class="btn-group">
-      <button class="btn btn-dark-mode" onclick="showCardSection('Card1')">Debit Card 1</button>
-      <button class="btn btn-dark-mode" onclick="showCardSection('Card2')">Debit Card 2</button>
+  
+  <!-- Fixed Bottom Navbar -->
+  <div class="navbar">
+    <button class="nav-button active" data-tab="dashboard-tab">
+      <span class="nav-icon">📊</span>
+      <span>Dashboard</span>
+    </button>
+    <button class="nav-button" data-tab="transactions-tab">
+      <span class="nav-icon">📝</span>
+      <span>Transactions</span>
+    </button>
+    <button class="nav-button" id="add-transaction-btn">
+      <span class="nav-icon">➕</span>
+      <span>Add</span>
+    </button>
+    <button class="nav-button" data-tab="stats-tab">
+      <span class="nav-icon">📈</span>
+      <span>Stats</span>
+    </button>
+    <button class="nav-button" data-tab="settings-tab">
+      <span class="nav-icon">⚙️</span>
+      <span>Settings</span>
+    </button>
+  </div>
+  
+  <!-- Add Transaction Modal -->
+  <div class="modal" id="add-transaction-modal">
+    <div class="modal-content">
+      <h2>Add Transaction</h2>
+      <form id="transaction-form">
+        <div class="form-group">
+          <label for="transaction-type">Type</label>
+          <select id="transaction-type" required>
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="transaction-account">Account</label>
+          <select id="transaction-account" required>
+            <option value="debit1">Main Debit Card</option>
+            <option value="debit2">Secondary Debit Card</option>
+            <option value="credit1">Credit Card</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="transaction-amount">Amount (€)</label>
+          <input type="number" id="transaction-amount" min="0.01" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="transaction-description">Description</label>
+          <input type="text" id="transaction-description" required>
+        </div>
+        <div class="form-group">
+          <label for="transaction-category">Category</label>
+          <select id="transaction-category">
+            <option value="food">Food & Dining</option>
+            <option value="shopping">Shopping</option>
+            <option value="transportation">Transportation</option>
+            <option value="bills">Bills & Utilities</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="health">Health</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="transaction-date">Date</label>
+          <input type="date" id="transaction-date" required>
+        </div>
+        <div class="button-row">
+          <button type="button" class="cancel" id="cancel-transaction">Cancel</button>
+          <button type="submit">Save</button>
+        </div>
+      </form>
     </div>
-    <div class="remaining-budget" id="remainingBudgetCard1">€0.00</div>
-  </nav>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   <script>
-    // Load income and expenses on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      loadIncome('Card1');
-      loadIncome('Card2');
-      loadExpenses('Card1');
-      loadExpenses('Card2');
-    });
-
-    // Show the selected card section
-    function showCardSection(card) {
-      if (card === 'Card1') {
-        document.getElementById('card1Section').style.display = 'block';
-        document.getElementById('card2Section').style.display = 'none';
-        updateRemainingBudgetDisplay(card);
-      } else {
-        document.getElementById('card1Section').style.display = 'none';
-        document.getElementById('card2Section').style.display = 'block';
-        updateRemainingBudgetDisplay(card);
+    // Initialize app with default data or load from localStorage
+    let accounts = {
+      debit1: {
+        name: "Main Debit Card",
+        balance: 1500.00,
+        transactions: []
+      },
+      debit2: {
+        name: "Secondary Debit Card",
+        balance: 800.00,
+        transactions: []
+      },
+      credit1: {
+        name: "Credit Card",
+        balance: 0.00,
+        transactions: [],
+        connectedTo: "debit1"
+      }
+    };
+    
+    let transactions = [];
+    let categories = {
+      food: 0,
+      shopping: 0,
+      transportation: 0,
+      bills: 0,
+      entertainment: 0,
+      health: 0,
+      other: 0
+    };
+    
+    // Load data from localStorage if available
+    function loadData() {
+      const savedAccounts = localStorage.getItem('budgetAppAccounts');
+      const savedTransactions = localStorage.getItem('budgetAppTransactions');
+      const savedCategories = localStorage.getItem('budgetAppCategories');
+      
+      if (savedAccounts) {
+        accounts = JSON.parse(savedAccounts);
+      }
+      
+      if (savedTransactions) {
+        transactions = JSON.parse(savedTransactions);
+      }
+      
+      if (savedCategories) {
+        categories = JSON.parse(savedCategories);
       }
     }
-
-    // Save income to localStorage
-    function saveIncome(card) {
-      const incomeInput = document.getElementById(`incomeInput${card}`).value;
-      localStorage.setItem(`monthlyIncome${card}`, incomeInput);
-      calculateRemainingBudget(card);
-      alert('Income saved!');
+    
+    // Save data to localStorage
+    function saveData() {
+      localStorage.setItem('budgetAppAccounts', JSON.stringify(accounts));
+      localStorage.setItem('budgetAppTransactions', JSON.stringify(transactions));
+      localStorage.setItem('budgetAppCategories', JSON.stringify(categories));
     }
-
-    // Load income from localStorage
-    function loadIncome(card) {
-      const income = localStorage.getItem(`monthlyIncome${card}`);
-      if (income) {
-        document.getElementById(`incomeInput${card}`).value = income;
-        calculateRemainingBudget(card);
+    
+    // Update UI with account data
+    function updateUI() {
+      // Update account balances
+      for (const accountId in accounts) {
+        const balanceElement = document.getElementById(`${accountId}-balance`);
+        if (balanceElement) {
+          balanceElement.textContent = accounts[accountId].balance.toFixed(2);
+        }
+        
+        // Update account transactions
+        const transactionsElement = document.getElementById(`${accountId}-transactions`);
+        if (transactionsElement) {
+          const accountTransactions = transactions
+            .filter(t => t.account === accountId)
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 3);
+          
+          if (accountTransactions.length > 0) {
+            transactionsElement.innerHTML = '';
+            accountTransactions.forEach(transaction => {
+              transactionsElement.appendChild(createTransactionElement(transaction));
+            });
+          } else {
+            transactionsElement.innerHTML = '<div class="no-transactions">No recent transactions</div>';
+          }
+        }
       }
-    }
-
-    // Add expense to the list
-    function addExpense(card) {
-      const name = document.getElementById(`expenseName${card}`).value;
-      const amount = document.getElementById(`expenseAmount${card}`).value;
-      if (name && amount) {
-        const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
-        expenses.push({ name, amount: parseFloat(amount) });
-        localStorage.setItem(`expenses${card}`, JSON.stringify(expenses));
-        loadExpenses(card);
-        document.getElementById(`expenseName${card}`).value = '';
-        document.getElementById(`expenseAmount${card}`).value = '';
-      } else {
-        alert('Please fill out both fields.');
+      
+      // Update total balance
+      const totalBalance = Object.values(accounts).reduce((sum, account) => sum + account.balance, 0);
+      document.getElementById('total-balance').textContent = totalBalance.toFixed(2);
+      
+      // Update all transactions list
+      const allTransactionsElement = document.getElementById('all-transactions');
+      if (allTransactionsElement) {
+        if (transactions.length > 0) {
+          allTransactionsElement.innerHTML = '';
+          const sortedTransactions = [...transactions].sort((a, b) => new Date(b.date) - new Date(a.date));
+          sortedTransactions.forEach(transaction => {
+            allTransactionsElement.appendChild(createTransactionElement(transaction, true));
+          });
+        } else {
+          allTransactionsElement.innerHTML = '<div class="no-transactions">No transactions recorded yet</div>';
+        }
       }
+      
+      // Update charts
+      updateCharts();
     }
-
-    // Load expenses from localStorage
-    function loadExpenses(card) {
-      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
-      const expensesList = document.getElementById(`expensesList${card}`);
-      expensesList.innerHTML = '';
-      expenses.forEach((expense, index) => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item d-flex justify-content-between align-items-center';
-        li.innerHTML = `
-          ${expense.name}: €${expense.amount.toFixed(2)}
-          <div>
-            <button class="btn btn-sm btn-secondary me-2" onclick="editExpense('${card}', ${index})">Edit</button>
-            <button class="btn btn-sm btn-danger" onclick="removeExpense('${card}', ${index})">Delete</button>
-          </div>
-        `;
-        expensesList.appendChild(li);
+    
+    // Create a transaction element for the UI
+    function createTransactionElement(transaction, showAccount = false) {
+      const transactionEl = document.createElement('div');
+      transactionEl.className = 'transaction';
+      
+      const details = document.createElement('div');
+      details.className = 'transaction-details';
+      
+      const name = document.createElement('div');
+      name.className = 'transaction-name';
+      name.textContent = transaction.description;
+      details.appendChild(name);
+      
+      const dateEl = document.createElement('div');
+      dateEl.className = 'transaction-date';
+      const date = new Date(transaction.date);
+      const dateText = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+      dateEl.textContent = showAccount 
+        ? `${dateText} · ${accounts[transaction.account].name}` 
+        : dateText;
+      details.appendChild(dateEl);
+      
+      const amount = document.createElement('div');
+      amount.className = `transaction-amount ${transaction.type === 'expense' ? 'expense' : 'income'}`;
+      amount.textContent = transaction.type === 'expense' 
+        ? `-€${transaction.amount.toFixed(2)}` 
+        : `+€${transaction.amount.toFixed(2)}`;
+      
+      transactionEl.appendChild(details);
+      transactionEl.appendChild(amount);
+      
+      return transactionEl;
+    }
+    
+    // Update chart visualizations
+    function updateCharts() {
+      // Monthly overview chart
+      const monthlyData = {};
+      
+      transactions.forEach(transaction => {
+        const date = new Date(transaction.date);
+        const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+        
+        if (!monthlyData[monthYear]) {
+          monthlyData[monthYear] = { income: 0, expense: 0 };
+        }
+        
+        if (transaction.type === 'income') {
+          monthlyData[monthYear].income += transaction.amount;
+        } else {
+          monthlyData[monthYear].expense += transaction.amount;
+        }
       });
-      calculateRemainingBudget(card);
+      
+      const overviewChartElement = document.getElementById('overview-chart');
+      if (overviewChartElement && Object.keys(monthlyData).length) {
+        const labels = Object.keys(monthlyData).sort((a, b) => {
+          const [aMonth, aYear] = a.split('/').map(Number);
+          const [bMonth, bYear] = b.split('/').map(Number);
+          return (aYear - bYear) || (aMonth - bMonth);
+        });
+        
+        const incomeData = labels.map(label => monthlyData[label].income);
+        const expenseData = labels.map(label => monthlyData[label].expense);
+        
+        if (window.overviewChart) {
+          window.overviewChart.destroy();
+        }
+        
+        window.overviewChart = new Chart(overviewChartElement, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Income',
+                data: incomeData,
+                backgroundColor: 'rgba(3, 218, 198, 0.7)',
+                borderColor: 'rgba(3, 218, 198, 1)',
+                borderWidth: 1
+              },
+              {
+                label: 'Expenses',
+                data: expenseData,
+                backgroundColor: 'rgba(207, 102, 121, 0.7)',
+                borderColor: 'rgba(207, 102, 121, 1)',
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)'
+                },
+                ticks: {
+                  color: '#b3b3b3'
+                }
+              },
+              x: {
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)'
+                },
+                ticks: {
+                  color: '#b3b3b3'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                labels: {
+                  color: '#ffffff'
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      // Category chart
+      const categoryChartElement = document.getElementById('category-chart');
+      if (categoryChartElement) {
+        const categoryData = {};
+        
+        transactions.forEach(transaction => {
+          if (transaction.type === 'expense' && transaction.category) {
+            if (!categoryData[transaction.category]) {
+              categoryData[transaction.category] = 0;
+            }
+            categoryData[transaction.category] += transaction.amount;
+          }
+        });
+        
+        if (Object.keys(categoryData).length) {
+          if (window.categoryChart) {
+            window.categoryChart.destroy();
+          }
+          
+          window.categoryChart = new Chart(categoryChartElement, {
+            type: 'doughnut',
+            data: {
+              labels: Object.keys(categoryData).map(cat => {
+                return cat.charAt(0).toUpperCase() + cat.slice(1);
+              }),
+              datasets: [{
+                data: Object.values(categoryData),
+                backgroundColor: [
+                  '#FF6384',
+                  '#36A2EB',
+                  '#FFCE56',
+                  '#4BC0C0',
+                  '#9966FF',
+                  '#FF9F40',
+                  '#C9CBCF'
+                ]
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  position: 'right',
+                  labels: {
+                    color: '#ffffff'
+                  }
+                }
+              }
+            }
+          });
+        }
+      }
     }
-
-    // Edit expense
-    function editExpense(card, index) {
-      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
-      const expense = expenses[index];
-      document.getElementById(`expenseName${card}`).value = expense.name;
-      document.getElementById(`expenseAmount${card}`).value = expense.amount;
-      removeExpense(card, index);
+    
+    // Add a new transaction
+    function addTransaction(transaction) {
+      // Calculate amount impact based on transaction type
+      const amountImpact = transaction.type === 'expense' ? -transaction.amount : transaction.amount;
+      
+      // Update account balance
+      accounts[transaction.account].balance += amountImpact;
+      
+      // If it's a credit card, also update the connected debit card
+      if (transaction.account === 'credit1' && transaction.type === 'expense') {
+        // For a credit card, we credit when there's an expense (it's a loan)
+        accounts[transaction.account].balance += transaction.amount * 2;
+      }
+      
+      // Add to transactions array
+      transaction.id = Date.now(); // Simple ID generation
+      transactions.push(transaction);
+      
+      // Update category data for expense
+      if (transaction.type === 'expense' && transaction.category) {
+        categories[transaction.category] += transaction.amount;
+      }
+      
+      // Save and update UI
+      saveData();
+      updateUI();
     }
-
-    // Remove expense from the list
-    function removeExpense(card, index) {
-      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
-      expenses.splice(index, 1);
-      localStorage.setItem(`expenses${card}`, JSON.stringify(expenses));
-      loadExpenses(card);
+    
+    // Tab switching
+    function setupTabs() {
+      const tabButtons = document.querySelectorAll('.nav-button[data-tab]');
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons and tabs
+          document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+          
+          // Add active class to clicked button
+          button.classList.add('active');
+          
+          // Show the corresponding tab
+          const tabId = button.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
     }
-
-    // Calculate the remaining budget
-    function calculateRemainingBudget(card) {
-      const income = parseFloat(localStorage.getItem(`monthlyIncome${card}`)) || 0;
-      const expenses = JSON.parse(localStorage.getItem(`expenses${card}`)) || [];
-      const totalExpenses = expenses.reduce((total, expense) => total + expense.amount, 0);
-      const remainingBudget = income - totalExpenses;
-      localStorage.setItem(`remainingBudget${card}`, remainingBudget);
-      updateRemainingBudgetDisplay(card);
+    
+    // Modal handling
+    function setupModals() {
+      const addTransactionBtn = document.getElementById('add-transaction-btn');
+      const addTransactionModal = document.getElementById('add-transaction-modal');
+      const cancelTransactionBtn = document.getElementById('cancel-transaction');
+      const transactionForm = document.getElementById('transaction-form');
+      
+      // Set default date to today
+      const todayStr = new Date().toISOString().split('T')[0];
+      document.getElementById('transaction-date').value = todayStr;
+      
+      // Show modal
+      addTransactionBtn.addEventListener('click', () => {
+        addTransactionModal.style.display = 'flex';
+      });
+      
+      // Hide modal
+      cancelTransactionBtn.addEventListener('click', () => {
+        addTransactionModal.style.display = 'none';
+        transactionForm.reset();
+        document.getElementById('transaction-date').value = todayStr;
+      });
+      
+      // Form submission
+      transactionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const transaction = {
+          type: document.getElementById('transaction-type').value,
+          account: document.getElementById('transaction-account').value,
+          amount: parseFloat(document.getElementById('transaction-amount').value),
+          description: document.getElementById('transaction-description').value,
+          category: document.getElementById('transaction-category').value,
+          date: document.getElementById('transaction-date').value
+        };
+        
+        addTransaction(transaction);
+        
+        // Reset and hide form
+        transactionForm.reset();
+        document.getElementById('transaction-date').value = todayStr;
+        addTransactionModal.style.display = 'none';
+      });
     }
-
-    // Update the remaining budget display in the navbar
-    function updateRemainingBudgetDisplay(card) {
-      const remainingBudget = localStorage.getItem(`remainingBudget${card}`) || 0;
-      document.getElementById('remainingBudgetCard1').innerText = `€${parseFloat(remainingBudget).toFixed(2)}`;
+    
+    // Settings options
+    function setupSettings() {
+      const exportDataBtn = document.getElementById('export-data');
+      const clearDataBtn = document.getElementById('clear-data');
+      
+      // Export data as CSV
+      exportDataBtn.addEventListener('click', () => {
+        let csv = 'Date,Account,Type,Category,Description,Amount\n';
+        
+        transactions.forEach(t => {
+          csv += `${t.date},${accounts[t.account].name},${t.type},${t.category},${t.description},${t.amount}\n`;
+        });
+        
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.setAttribute('hidden', '');
+        a.setAttribute('href', url);
+        a.setAttribute('download', 'budget_data.csv');
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+      
+      // Clear all data
+      clearDataBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear all your data? This cannot be undone.')) {
+          // Reset to default values
+          accounts = {
+            debit1: {
+              name: "Main Debit Card",
+              balance: 0.00,
+              transactions: []
+            },
+            debit2: {
+              name: "Secondary Debit Card",
+              balance: 0.00,
+              transactions: []
+            },
+            credit1: {
+              name: "Credit Card",
+              balance: 0.00,
+              transactions: [],
+              connectedTo: "debit1"
+            }
+          };
+          
+          transactions = [];
+          categories = {
+            food: 0,
+            shopping: 0,
+            transportation: 0,
+            bills: 0,
+            entertainment: 0,
+            health: 0,
+            other: 0
+          };
+          
+          saveData();
+          updateUI();
+          
+          alert('All data has been cleared.');
+        }
+      });
     }
+    
+    // Initialize the application
+    function init() {
+      loadData();
+      updateUI();
+      setupTabs();
+      setupModals();
+      setupSettings();
+    }
+    
+    // Run initialization when DOM is ready
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
